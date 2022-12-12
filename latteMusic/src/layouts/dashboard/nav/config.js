@@ -18,6 +18,11 @@ const navConfig = [
   },
   {
     title: '음악추천',
+    path: '/dashboard/recommendationEx',
+    icon: icon('ic_cart'),
+  },
+  {
+    title: '음악추천 코딩',
     path: '/dashboard/recommendation',
     icon: icon('ic_cart'),
   },
