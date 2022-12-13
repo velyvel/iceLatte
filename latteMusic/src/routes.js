@@ -10,6 +10,7 @@ import Page404 from './pages/Page404';
 import RecommendationExPage from './pages/recommendationExPage';
 import RecommendationPage from './pages/recommendationPage';
 import DashboardAppPage from './pages/DashboardAppPage';
+import Playlist from './pages/Playlist';
 
 // ----------------------------------------------------------------------
 
@@ -25,6 +26,7 @@ export default function Router() {
         { path: 'recommendationEx', element: <RecommendationExPage /> },
         { path: 'recommendation', element: <RecommendationPage /> },
         { path: 'blog', element: <BlogPage /> },
+        { path: 'playlist', element: <Playlist /> }
       ],
     },
     {

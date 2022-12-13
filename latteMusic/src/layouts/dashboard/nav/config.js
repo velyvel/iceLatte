@@ -32,6 +32,11 @@ const navConfig = [
     icon: icon('ic_blog'),
   },
   {
+    title: '플레이리스트',
+    path: '/dashboard/playlist',
+    icon: icon('ic_blog'),
+  },
+  {
     title: 'login',
     path: '/login',
     icon: icon('ic_lock'),
