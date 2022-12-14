@@ -11,18 +11,19 @@ import RecommendationExPage from './pages/recommendationExPage';
 import RecommendationPage from './pages/recommendationPage';
 import DashboardAppPage from './pages/DashboardAppPage';
 import Playlist from './pages/Playlist';
+import HospitalPage from './pages/HosptialPage';
 
 // ----------------------------------------------------------------------
 
 export default function Router() {
   const routes = useRoutes([
     {
-      path: '/dashboard',
-      element: <DashboardLayout />,
+      path: '/dashboard', element: <DashboardLayout />,
       children: [
         { element: <Navigate to="/dashboard/app" />, index: true },
         { path: 'app', element: <DashboardAppPage /> },
         { path: 'user', element: <UserPage /> },
+        { path: 'hospital', element: <HospitalPage />},
         { path: 'recommendationEx', element: <RecommendationExPage /> },
         { path: 'recommendation', element: <RecommendationPage /> },
         { path: 'blog', element: <BlogPage /> },

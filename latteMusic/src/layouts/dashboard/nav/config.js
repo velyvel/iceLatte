@@ -17,6 +17,11 @@ const navConfig = [
     icon: icon('ic_user'),
   },
   {
+    title: 'Hospital',
+    path: '/dashboard/hospital',
+    icon: icon('ic_analytics'),
+  },
+  {
     title: '음악추천',
     path: '/dashboard/recommendationEx',
     icon: icon('ic_cart'),
