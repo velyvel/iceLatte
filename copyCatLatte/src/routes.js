@@ -1,4 +1,4 @@
-import { Navigate, useRoutes } from 'react-router-dom';
+import {Navigate, useRoutes} from 'react-router-dom';
 // layouts
 import DashboardLayout from './layouts/dashboard';
 import SimpleLayout from './layouts/simple';
@@ -11,6 +11,9 @@ import RecommendationExPage from './pages/recommendationExPage';
 import RecommendationPage from './pages/recommendationPage';
 import DashboardAppPage from './pages/DashboardAppPage';
 import Playlist from './pages/Playlist';
+import AbandonedList from "./abandoned/abandonedList";
+import AbandonedInquire from "./abandoned/abandonedInquire";
+import AbandonedChart from "./abandoned/abandonedChart";
 
 // ----------------------------------------------------------------------
 
@@ -24,9 +27,17 @@ export default function Router() {
         { path: 'app', element: <DashboardAppPage /> },
         { path: 'user', element: <UserPage /> },
         { path: 'recommendationEx', element: <RecommendationExPage /> },
-        { path: 'recommendation', element: <RecommendationPage /> },
+        { path: 'recommendation',
+          element: <RecommendationPage />,
+          children: [
+            { path: 'abandoned/abandonedList', element: <AbandonedList /> },
+            { path: 'abandoned/abandonedInquire', element: <AbandonedInquire /> },
+            { path: 'abandoned/abandonedChart', element: <AbandonedChart /> }
+
+          ]
+        },
         { path: 'blog', element: <BlogPage /> },
-        { path: 'playlist', element: <Playlist /> }
+        { path: 'playlist', element: <Playlist /> },
       ],
     },
     {
