@@ -32,9 +32,9 @@ const navConfig = [
     icon: icon('ic_blog'),
   },
   {
-    title: '플레이리스트',
-    path: '/dashboard/playlist',
-    icon: icon('ic_blog'),
+    title: '공원 조회',
+    path: '/dashboard/parkinfo',
+    icon: icon('ic_park'),
   },
   {
     title: 'login',

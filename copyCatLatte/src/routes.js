@@ -10,10 +10,11 @@ import Page404 from './pages/Page404';
 import RecommendationExPage from './pages/recommendationExPage';
 import RecommendationPage from './pages/recommendationPage';
 import DashboardAppPage from './pages/DashboardAppPage';
-import Playlist from './pages/Playlist';
 import AbandonedList from "./abandoned/abandonedList";
 import AbandonedInquire from "./abandoned/abandonedInquire";
 import AbandonedChart from "./abandoned/abandonedChart";
+import ParkInfo from './pages/ParkInfo';
+
 
 // ----------------------------------------------------------------------
 
@@ -37,7 +38,7 @@ export default function Router() {
           ]
         },
         { path: 'blog', element: <BlogPage /> },
-        { path: 'playlist', element: <Playlist /> },
+        { path: 'parkinfo', element: <ParkInfo /> }
       ],
     },
     {
