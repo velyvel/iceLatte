@@ -32,6 +32,16 @@ const navConfig = [
     icon: icon('ic_blog'),
   },
   {
+    title: '블로그 검색',
+    path: '/dashboard/blogsearch',
+    icon: icon('ic_blog'),
+  },
+  {
+    title: '지도 검색',
+    path: '/dashboard/kakaomap',
+    icon: icon('ic_blog'),
+  },
+  {
     title: '공원 조회',
     path: '/dashboard/parkinfo',
     icon: icon('ic_park'),

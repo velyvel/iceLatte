@@ -4,6 +4,8 @@ import DashboardLayout from './layouts/dashboard';
 import SimpleLayout from './layouts/simple';
 //
 import BlogPage from './pages/BlogPage';
+import BlogSearchPage from './pages/BlogSearchPage';
+import LandingPage from './pages/LandingPage';
 import UserPage from './pages/UserPage';
 import LoginPage from './pages/LoginPage';
 import Page404 from './pages/Page404';
@@ -38,7 +40,9 @@ export default function Router() {
           ]
         },
         { path: 'blog', element: <BlogPage /> },
-        { path: 'parking', element: <ParkInfo /> }
+        { path: 'blogsearch', element: <BlogSearchPage /> },
+        { path: 'kakaomap', element: <LandingPage /> },
+        { path: 'parkinfo', element: <ParkInfo /> }
       ],
     },
     {
