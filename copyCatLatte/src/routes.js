@@ -38,7 +38,7 @@ export default function Router() {
           ]
         },
         { path: 'blog', element: <BlogPage /> },
-        { path: 'parkinfo', element: <ParkInfo /> }
+        { path: 'parking', element: <ParkInfo /> }
       ],
     },
     {

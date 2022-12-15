@@ -1,4 +1,4 @@
-const AbandonedChart = (props) => {
+const AbandonedChart = () => {
     return(
         <div>
             <h1> 리스트 3 불러올꺼야</h1>

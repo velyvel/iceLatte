@@ -3,7 +3,6 @@ import React, { useEffect } from 'react';
 // @mui
 import { Container } from '@mui/material';
 // mock
-import ParkInfoApi from '../_mock/parkInfoApi';
 import ParkInfoData from '../_mock/parkInfoData';
 
 
