@@ -1,6 +1,8 @@
-/*  eslint-disable */
-import React, {useEffect, useState} from 'react';
-import {Outlet} from 'react-router-dom';
+
+/* eslint-disable */
+import React, { useEffect } from 'react';
+import { Outlet } from 'react-router-dom';
+
 // @mui
 import {Container} from '@mui/material';
 import axios from "axios";
