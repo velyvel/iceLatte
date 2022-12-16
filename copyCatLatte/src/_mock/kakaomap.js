@@ -6,11 +6,13 @@ const { kakao } = window
 const kakaomap = ({ searchPlace }) => {
 
   // 검색결과 배열에 담아줌
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [Places, setPlaces] = useState([])
   
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
-    var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 })
-    var markers = []
+    const infowindow = new kakao.maps.InfoWindow({zIndex: 1});
+    const markers = [];
     const container = document.getElementById('myMap')
     const options = {
       center: new kakao.maps.LatLng(33.450701, 126.570667),
@@ -24,8 +26,9 @@ const kakaomap = ({ searchPlace }) => {
 
     function placesSearchCB(data, status, pagination) {
       if (status === kakao.maps.services.Status.OK) {
-        let bounds = new kakao.maps.LatLngBounds()
+        const bounds = new kakao.maps.LatLngBounds()
 
+        // eslint-disable-next-line no-plusplus
         for (let i = 0; i < data.length; i++) {
           displayMarker(data[i])
           bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x))
@@ -40,17 +43,18 @@ const kakaomap = ({ searchPlace }) => {
 
     // 검색결과 목록 하단에 페이지 번호 표시
     function displayPagination(pagination) {
-      var paginationEl = document.getElementById('pagination'),
-        fragment = document.createDocumentFragment(),
-        i
+      const paginationEl = document.getElementById('pagination');
+          const fragment = document.createDocumentFragment();
+          let i;
 
       // 기존에 추가된 페이지 번호 삭제
       while (paginationEl.hasChildNodes()) {
         paginationEl.removeChild(paginationEl.lastChild)
       }
 
-      for (i = 1; i <= pagination.last; i++) {
-        var el = document.createElement('a')
+      // eslint-disable-next-line no-plusplus
+      for (i = 1; i <= pagination.last; i ++) {
+        const el = document.createElement('a');
         el.href = '#'
         el.innerHTML = i
 
@@ -70,13 +74,13 @@ const kakaomap = ({ searchPlace }) => {
     }
 
     function displayMarker(place) {
-      let marker = new kakao.maps.Marker({
-        map: map,
+      const marker = new kakao.maps.Marker({
+        map,
         position: new kakao.maps.LatLng(place.y, place.x),
       })
 
-      kakao.maps.event.addListener(marker, 'click', function () {
-        infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>')
+      kakao.maps.event.addListener(marker, 'click', () => {
+        infowindow.setContent(`<div style="padding:5px;font-size:12px;">${  place.place_name  }</div>`)
         infowindow.open(map, marker)
       })
     }
@@ -90,7 +94,7 @@ const kakaomap = ({ searchPlace }) => {
           width: '500px',
           height: '500px',
         }}
-      ></div>
+       />
       <div id="result-list">
         {Places.map((item, i) => (
           <div key={i} style={{ marginTop: '20px' }}>
@@ -109,7 +113,7 @@ const kakaomap = ({ searchPlace }) => {
             </div>
           </div>
         ))}
-        <div id="pagination"></div>
+        <div id="pagination" />
       </div>
     </div>
   )
