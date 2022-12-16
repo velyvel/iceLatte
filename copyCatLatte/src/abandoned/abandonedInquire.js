@@ -1,8 +1,5 @@
-
-/* eslint-disable */
-import React, { useEffect } from 'react';
-import { Outlet } from 'react-router-dom';
-
+import React, {useEffect, useState} from 'react';
+import {Outlet} from 'react-router-dom';
 // @mui
 import {Container} from '@mui/material';
 import axios from "axios";
@@ -10,15 +7,17 @@ import axios from "axios";
 
 const {kakao} = window;
 export default function abandonedInquire() {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [selectedSido, setSelectedSido] = useState(null);
     const handleSidoSelect = (e) => {
         setSelectedSido(e.target.value);
     };
 
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [selectedSigungu, setSelectedSigungu] =  useState(null);
     const handleSigunguSelect = (e) => {
         setSelectedSigungu(e.target.value)
-            // .append('<option value ="` + {item.orgCd} + `">' + {orgdownNm} +'</option>');
+        // .append('<option value ="` + {item.orgCd} + `">' + {orgdownNm} +'</option>');
     };
 
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -36,9 +35,9 @@ export default function abandonedInquire() {
         const serviceKey = "eMVfxUA%2FWCe5PDwQ%2FyOQYpyG8CN7YSnS5d1WIsyaPbpWB8XA5Y3frj21E9fUde73lxbrhL%2FZOZxxQveKRpOFkQ%3D%3D";
         const sidoUrl = `https://apis.data.go.kr/1543061/abandonmentPublicSrvc/sido?serviceKey=${serviceKey}&numOfRows=17&pageNo=1&_type=json`;
         axios.get(sidoUrl)
-             .then( (response) => {
-                 setAddressLists(response.data.response.body.items.item);
-             });
+            .then( (response) => {
+                setAddressLists(response.data.response.body.items.item);
+            });
         // http://apis.data.go.kr/1543061/abandonmentPublicSrvc/sigungu?serviceKey=eMVfxUA%2FWCe5PDwQ%2FyOQYpyG8CN7YSnS5d1WIsyaPbpWB8XA5Y3frj21E9fUde73lxbrhL%2FZOZxxQveKRpOFkQ%3D%3D&upr_cd=6110000
         const uprCd = "6110000";
         const sigunguUrl = `https://apis.data.go.kr/1543061/abandonmentPublicSrvc/sigungu?serviceKey=${serviceKey}&upr_cd=${uprCd}&_type=json`;
@@ -66,10 +65,10 @@ export default function abandonedInquire() {
                                 defaultValue="시, 도 조회">
                             {
                                 addressLists? addressLists.map((item, idx)=> (
-                                        <option value={item.orgCd} key={item.orgCd}>{item.orgdownNm}</option>
+                                            <option value={item.orgCd} key={item.orgCd}>{item.orgdownNm}</option>
+                                        )
                                     )
-                                )
-                                : <option>데이터없당🙅‍♂️</option>
+                                    : <option>데이터없당🙅‍♂️</option>
                             }
                         </select>
                         <br/>
