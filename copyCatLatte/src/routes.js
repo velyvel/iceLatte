@@ -17,6 +17,9 @@ import AbandonedInquire from "./abandoned/abandonedInquire";
 import AbandonedChart from "./abandoned/abandonedChart";
 import ParkInfo from './pages/ParkInfo';
 
+import RecommendationRandom from './PetRecommendation/RecommendationRandom';
+import RecommendationSearch from './PetRecommendation/RecommendationSearch';
+
 
 // ----------------------------------------------------------------------
 
@@ -28,7 +31,14 @@ export default function Router() {
       children: [
         { element: <Navigate to="/" />, index: true },
         { path: 'app', element: <DashboardAppPage /> },
-        { path: 'user', element: <UserPage /> },
+        { path: 'user', element: <UserPage />,
+        children: [
+          { path: 'PetRecommendation/RecommendationRandom', element: <RecommendationRandom /> },
+          { path: 'PetRecommendation/RecommendationSearch', element: <RecommendationSearch /> }
+
+        ] },
+
+
         { path: 'recommendationEx', element: <RecommendationExPage /> },
         { path: 'recommendation',
           element: <RecommendationPage />,

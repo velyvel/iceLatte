@@ -12,7 +12,7 @@ const navConfig = [
     icon: icon('ic_analytics'),
   },
   {
-    title: 'user',
+    title: '제목미정(동물 추천)',
     path: '/dashboard/user',
     icon: icon('ic_user'),
   },
