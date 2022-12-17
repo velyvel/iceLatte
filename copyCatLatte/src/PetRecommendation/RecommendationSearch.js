@@ -26,9 +26,9 @@ const RecommendationSearch=()=>{
 
             if(breed.id===selectedV) {
                 setSelectedBreedInfo(breed);
-                console.log(JSON.stringify(selectedBreedInfo));
+                console.log((selectedBreedInfo));
                 // eslint-disable-next-line
-                // debugger;
+                // debugger;ㅋ
                 // eslint-disable-next-line
                 break;
             }
