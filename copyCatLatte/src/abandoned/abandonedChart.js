@@ -1,3 +1,4 @@
+/* eslint-disable */
 const AbandonedChart = () => {
     return(
         <div>

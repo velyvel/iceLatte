@@ -1,16 +1,16 @@
-
+/* eslint-disable */
 import React, { useEffect, useState } from 'react'
 
 const { kakao } = window
 
-const kakaomap = ({ searchPlace }) => {
+const Kakaomap = ({ searchPlace }) => {
 
   // 검색결과 배열에 담아줌
   const [Places, setPlaces] = useState([])
   
   useEffect(() => {
-    var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 })
-    var markers = []
+    const infowindow = new kakao.maps.InfoWindow({ zIndex: 1 })
+    const markers = []
     const container = document.getElementById('myMap')
     const options = {
       center: new kakao.maps.LatLng(33.450701, 126.570667),
@@ -24,7 +24,9 @@ const kakaomap = ({ searchPlace }) => {
 
     function placesSearchCB(data, status, pagination) {
       if (status === kakao.maps.services.Status.OK) {
+
         let bounds = new kakao.maps.LatLngBounds()
+
 
         for (let i = 0; i < data.length; i++) {
           displayMarker(data[i])
@@ -40,6 +42,7 @@ const kakaomap = ({ searchPlace }) => {
 
     // 검색결과 목록 하단에 페이지 번호 표시
     function displayPagination(pagination) {
+
       var paginationEl = document.getElementById('pagination'),
         fragment = document.createDocumentFragment(),
         i
@@ -115,4 +118,4 @@ const kakaomap = ({ searchPlace }) => {
   )
 }
 
-export default kakaomap
+export default Kakaomap
