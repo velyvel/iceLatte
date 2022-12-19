@@ -1,0 +1,8 @@
+INDEX VERSION 1.4+/Users/sulim/Documents/dev/spings/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+1803632834.index
+2354705757.index
+2141687285.index
+3806786782.index
+1205733104.index
+51931076.index
+3853273194.index
