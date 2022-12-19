@@ -1,7 +1,5 @@
 import { Helmet } from 'react-helmet-async';
 import SeoulHospital from '../_mock/hospital/SeoulHospital';
-import HospitalMap from '../_mock/hospital/HospitalMap';
-import TmToWgs from '../_mock/hospital/TmToWgs';
 
 // ----------------------------------------------------------------------
 
