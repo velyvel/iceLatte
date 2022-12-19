@@ -1,5 +1,5 @@
 // eslint-disable-next-line
-const ShelterList = ({park}) => {
+const ShelterList = ({shelter}) => {
     return (
         <>
         <div style={{
@@ -12,7 +12,7 @@ const ShelterList = ({park}) => {
                 float:'left',
                 backgroundSize: '300px'
                 }}>
-                    <img src={park.P_IMG} alt={park.P_PARK}/>
+                    <img src={shelter.P_IMG} alt={shelter.P_PARK}/>
                 </div>
                 <div style={{
                 width:'30%',
@@ -20,9 +20,9 @@ const ShelterList = ({park}) => {
                 float:'right'
                 }}>
                 {/* eslint-disable-next-line */}
-                <p>{park.P_PARK}</p>
+                <p>{shelter.P_PARK}</p>
                 {/* eslint-disable-next-line */}
-                <p>{park.P_ADDR}</p>
+                <p>{shelter.P_ADDR}</p>
                 {/* eslint-disable-next-line */}
                 {/* <p>{park.P_LIST_CONTENT}</p> */}
                 

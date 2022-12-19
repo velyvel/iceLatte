@@ -46,8 +46,8 @@ export default function abandonedInquire() {
                 setSelectedSido(response.data.response.body.items.item);
             });
         // 시, 군, 구 조회 ----------------------------------------------------------------------
-        const uprCd = "6110000";
-        // const uprCd = ["6110000","6260000","6270000","6280000","6290000","5690000","6300000","6310000","6410000","6420000","6430000","6440000","6450000", "6460000","6470000","6480000","6500000", ]
+        // const uprCd = "6110000";
+        const uprCd = ["6110000","6260000","6270000","6280000","6290000","5690000","6300000","6310000","6410000","6420000","6430000","6440000","6450000", "6460000","6470000","6480000","6500000", ]
         const sigunguUrl = `https://apis.data.go.kr/1543061/abandonmentPublicSrvc/sigungu?serviceKey=${serviceKey}&upr_cd=${uprCd}&_type=${type}`;
         axios.get(sigunguUrl)
             .then((response)=>{
@@ -65,9 +65,6 @@ export default function abandonedInquire() {
         const map = new kakao.maps.Map(container, options);
 
     }, []);
-    // ==========================================================================================================
-
-
 
     return (
         <>
@@ -80,7 +77,7 @@ export default function abandonedInquire() {
                             <div className="form-group col-md-4">
                                 {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
                                 <label className="mb-2">시, 도 조회</label>
-                                <select onChange={handleSidoSelect} className="form-select form-select-sm mb-1" aria-label=".form-select-lg example"
+                                <select className="form-select form-select-sm mb-1" aria-label=".form-select-lg example"
                                         defaultValue="시, 도 조회">
                                     {
                                         selectedSido? selectedSido.map((item, idx)=> (
@@ -121,6 +118,8 @@ export default function abandonedInquire() {
                          height: 500
                      }}/>
                 <br/><br/>
+
+                <button type={"button"} className="btn btn-primary" onClick={searchHandler}>유기동물 리스트</button>
                 <table className="table table-hover">
                     <thead>
                     <th/>
