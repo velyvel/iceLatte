@@ -17,7 +17,7 @@ import navConfig from './config';
 
 // ---로그인 유저창, jdon franky------------------------------------------------------------------
 
-const NAV_WIDTH = 280;
+const NAV_WIDTH = 250;
 
 const StyledAccount = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -61,15 +61,10 @@ export default function Nav({ openNav, onCloseNav }) {
       <Box sx={{ mb: 5, mx: 2.5 }}>
         <Link underline="none">
           <StyledAccount>
-            <Avatar src={account.photoURL} alt="photoURL" />
 
             <Box sx={{ ml: 2 }}>
               <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
-                {account.displayName}
-              </Typography>
-
-              <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                {account.role}
+                <p>여기에 간단한 아이콘과 프로젝트 설명 넣자요</p>
               </Typography>
             </Box>
           </StyledAccount>
