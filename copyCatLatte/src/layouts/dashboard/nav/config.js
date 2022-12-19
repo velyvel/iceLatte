@@ -17,19 +17,9 @@ const navConfig = [
     icon: icon('ic_user'),
   },
   {
-    title: '음악추천',
-    path: '/dashboard/recommendationEx',
-    icon: icon('ic_cart'),
-  },
-  {
     title: '유기동물 조회, 구조',
-    path: '/dashboard/recommendation',
-    icon: icon('ic_cart'),
-  },
-  {
-    title: 'blog',
-    path: '/dashboard/blog',
-    icon: icon('ic_blog'),
+    path: '/dashboard/recommendation/abandoned/abandonedHome',
+    icon: icon('shelter'),
   },
   {
     title: '블로그 검색',
@@ -45,16 +35,6 @@ const navConfig = [
     title: '공원 조회',
     path: '/dashboard/parkinfo',
     icon: icon('ic_park'),
-  },
-  {
-    title: 'login',
-    path: '/login',
-    icon: icon('ic_lock'),
-  },
-  {
-    title: 'Not found',
-    path: '/404',
-    icon: icon('ic_disabled'),
   },
 ];
 

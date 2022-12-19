@@ -19,6 +19,7 @@ import ParkInfo from './pages/ParkInfo';
 
 import RecommendationRandom from './PetRecommendation/RecommendationRandom';
 import RecommendationSearch from './PetRecommendation/RecommendationSearch';
+import AbandonedHome from "./abandoned/abandonedHome";
 
 
 // ----------------------------------------------------------------------
@@ -43,6 +44,7 @@ export default function Router() {
         { path: 'recommendation',
           element: <RecommendationPage />,
           children: [
+            { path: 'abandoned/abandonedHome', element: <AbandonedHome /> },
             { path: 'abandoned/abandonedList', element: <AbandonedList /> },
             { path: 'abandoned/abandonedInquire', element: <AbandonedInquire /> },
             { path: 'abandoned/abandonedChart', element: <AbandonedChart /> }

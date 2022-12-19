@@ -1,4 +1,4 @@
-import {useState} from "react";
+import React, {useState} from "react";
 import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -16,8 +16,20 @@ const AbandonedList = () => {
 
     return(
         <div>
-            <button type={"button"} className="btn btn-secondary" onClick={clickHandler}>유기동물 리스트</button>
-                <br/><br/>
+
+                <div className="row mb-6">
+                    <div className="input-group mb-3" style={{width:'50%'}} >
+                        <select className="btn btn" style={{width:'20%', backgroundColor:'#439A97', color:'white'}}>
+                            <option value="{item.kindCd}">품종</option>
+                            <option value="{ item.careNm }">보호장소</option>
+                            <option value="{ item.orgNm }">지역</option>
+                        </select>
+                        <input className="form-control" placeholder="검색어를 입력해주세요"/>
+                        <button className="btn btn" style={{backgroundColor:'#439A97', opacity:'70%'}} onClick={clickHandler}>검색하기</button>
+                        {/* <img src="/assets/icons/search.png" alt="search" style={{maxWidth:'5%'}}/> */}
+                    </div>
+                </div>
+
             <table className="table table-hover">
                 <thead>
                     <th>종</th>
@@ -34,7 +46,6 @@ const AbandonedList = () => {
                             <td>{ item.kindCd }</td>
                             <td>{ item.careNm }</td>
                             <td><img src={item.filename} alt={item.filename}/></td>
-                            {/* <td><a href={item.filename}>{item.filename }</a></td> */}
                             <td>{ item.orgNm }</td>
                             <td>{ item.processState }</td>
                             <td>{ item.neuterYn }</td>

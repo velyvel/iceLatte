@@ -21,30 +21,41 @@ export default function abandonedInquire() {
     };
 
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [addressLists, setAddressLists] = useState(null);
-    const searchHandler = {
-
+    const [shelters, setshelters] = useState(null);
+    const searchHandler = async () =>
+    {
+        const type = "json"
+        const uprCd = "6110000";
+        const serviceKey = "eMVfxUA%2FWCe5PDwQ%2FyOQYpyG8CN7YSnS5d1WIsyaPbpWB8XA5Y3frj21E9fUde73lxbrhL%2FZOZxxQveKRpOFkQ%3D%3D";
+        const shelterUrl = `https://apis.data.go.kr/1543061/abandonmentPublicSrvc/shelter?serviceKey=${serviceKey}&upr_cd=${uprCd}&org_cd=3220000&_type=${type}`;
+        axios.get(shelterUrl)
+            .then((response) => {
+                setshelters(response.data.response.body.items.item)
+            });
     };
-
     // 질문: orgCd = uprCd; 이거 처리 어떻게?
-
+    // 시, 도 조회 ----------------------------------------------------------------------
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(() => {
         // http://apis.data.go.kr/1543061/abandonmentPublicSrvc/sigungu?serviceKey=eMVfxUA%2FWCe5PDwQ%2FyOQYpyG8CN7YSnS5d1WIsyaPbpWB8XA5Y3frj21E9fUde73lxbrhL%2FZOZxxQveKRpOFkQ%3D%3D
-
+        const type = "json"
         const serviceKey = "eMVfxUA%2FWCe5PDwQ%2FyOQYpyG8CN7YSnS5d1WIsyaPbpWB8XA5Y3frj21E9fUde73lxbrhL%2FZOZxxQveKRpOFkQ%3D%3D";
-        const sidoUrl = `https://apis.data.go.kr/1543061/abandonmentPublicSrvc/sido?serviceKey=${serviceKey}&numOfRows=17&pageNo=1&_type=json`;
+        const sidoUrl = `https://apis.data.go.kr/1543061/abandonmentPublicSrvc/sido?serviceKey=${serviceKey}&numOfRows=17&pageNo=1&_type=${type}`;
         axios.get(sidoUrl)
             .then( (response) => {
-                setAddressLists(response.data.response.body.items.item);
+                setSelectedSido(response.data.response.body.items.item);
             });
-        // http://apis.data.go.kr/1543061/abandonmentPublicSrvc/sigungu?serviceKey=eMVfxUA%2FWCe5PDwQ%2FyOQYpyG8CN7YSnS5d1WIsyaPbpWB8XA5Y3frj21E9fUde73lxbrhL%2FZOZxxQveKRpOFkQ%3D%3D&upr_cd=6110000
+        // 시, 군, 구 조회 ----------------------------------------------------------------------
         const uprCd = "6110000";
-        const sigunguUrl = `https://apis.data.go.kr/1543061/abandonmentPublicSrvc/sigungu?serviceKey=${serviceKey}&upr_cd=${uprCd}&_type=json`;
+        // const uprCd = ["6110000","6260000","6270000","6280000","6290000","5690000","6300000","6310000","6410000","6420000","6430000","6440000","6450000", "6460000","6470000","6480000","6500000", ]
+        const sigunguUrl = `https://apis.data.go.kr/1543061/abandonmentPublicSrvc/sigungu?serviceKey=${serviceKey}&upr_cd=${uprCd}&_type=${type}`;
         axios.get(sigunguUrl)
             .then((response)=>{
                 setSelectedSigungu(response.data.response.body.items.item)
             });
+
+        // 보호소 검색----------------------------------------------------------------------
+
 
         const container = document.getElementById('myMap');
         const options = {
@@ -57,36 +68,48 @@ export default function abandonedInquire() {
 
     return (
         <>
-            <Container>
-                <h5> 지역별 보호소 조회</h5>
-                <form>
-                    <div className="btn-toolbar mb-3">
-                        <select onChange={handleSidoSelect} className="form-select form-select-sm mb-1" aria-label=".form-select-lg example"
-                                defaultValue="시, 도 조회">
-                            {
-                                addressLists? addressLists.map((item, idx)=> (
-                                            <option value={item.orgCd} key={item.orgCd}>{item.orgdownNm}</option>
-                                        )
-                                    )
-                                    : <option>데이터없당🙅‍♂️</option>
-                            }
-                        </select>
-                        <br/>
-                        <select onChange={handleSigunguSelect} className="form-select form-select-sm mb-1" aria-label=".form-select-lg example"
-                                defaultValue="시, 군, 구 조회">
-                            {
-                                selectedSigungu? selectedSigungu.map((item, idx)=> (
-                                            <option value={item.orgCd} key={item.orgCd}>{item.orgdownNm}</option>
-                                        )
-                                    )
-                                    : <option>시군구 데이터없당🙅‍♂️</option>
-                            }
-                        </select>
-                        <br/>
-                        <button type={"button"} className="btn btn-secondary" onClick={searchHandler}>조회하기</button>
-                    </div>
+            <Container className="align-content-lg-center">
+                <div className="row">
+                    <div className="col-sm-12">
+                        <h2 className="mt-4 mb-4 fw-bold"> 보호소 조회하기</h2>
 
-                </form>
+                        <div className="row mb-3">
+                            <div className="form-group col-md-4">
+                                {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+                                <label className="mb-2">시, 도 조회</label>
+                                <select onChange={handleSidoSelect} className="form-select form-select-sm mb-1" aria-label=".form-select-lg example"
+                                        defaultValue="시, 도 조회">
+                                    {
+                                        selectedSido? selectedSido.map((item, idx)=> (
+                                                    <option value={item.orgCd} key={item.orgCd}>{item.orgdownNm}</option>
+                                                )
+                                            )
+                                            : <option>데이터없당🙅‍♂️</option>
+                                    }
+                                </select>
+                            </div>
+
+                            <div className="form-group col-md-4">
+                                {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+                                <label className="mb-2">시, 군, 구 조회</label>
+                                <select onChange={handleSigunguSelect} className="form-select form-select-sm mb-1" aria-label=".form-select-lg example"
+                                        defaultValue="시, 군, 구 조회">
+                                    {
+                                        selectedSigungu? selectedSigungu.map((item, idx)=> (
+                                                    <option value={item.orgCd} key={item.orgCd}>{item.orgdownNm}</option>
+                                                )
+                                            )
+                                            : <option>시군구 데이터없당🙅‍♂️</option>
+                                    }
+                                </select>
+                            </div>
+
+                            <div className="form-group col-md-3">
+                                <button type={"button"} className="btn btn-secondary" onClick={searchHandler}>조회하기</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <br/>
 
                 <div id='myMap'
@@ -95,21 +118,20 @@ export default function abandonedInquire() {
                          height: 500
                      }}/>
                 <br/><br/>
-
                 <table className="table table-hover">
                     <thead>
-                    <th>보호소명</th>
+                    <th/>
                     </thead>
                     <tbody>
-                    { addressLists ?
-                        addressLists.map( (item, idx) => (
+                    { shelters ?
+                        shelters.map( (item, idx) => (
                                 <tr key={idx}>
                                     <td>{ item.careNm }</td>
                                 </tr>
                             )
                         )
                         :
-                        <tr><td/>조회하기</tr>
+                        <tr/>
                     }
                     </tbody>
                 </table>

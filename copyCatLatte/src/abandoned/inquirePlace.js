@@ -1,5 +1,5 @@
 // SearchPlace.js
-
+/* eslint-disable */
 import React, { useState } from "react";
 import recommendationPage from "../pages/recommendationPage";
 
