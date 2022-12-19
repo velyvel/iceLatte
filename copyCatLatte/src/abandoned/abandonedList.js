@@ -12,7 +12,9 @@ const AbandonedList = () => {
         const response = await axios.get(url);
         setAbLists(response.data.response.body.items.item);
 
+
     };
+
 
     return(
         <div>
