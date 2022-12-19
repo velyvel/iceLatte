@@ -1,9 +1,13 @@
+/* eslint-disable */
 import { Helmet } from 'react-helmet-async';
 import axios from "axios";
 import React, { useEffect, useState } from 'react';
 // @mui
 import { Container } from '@mui/material';
-import ParkList from '../_mock/ParkList';
+import ParkList from '../park/ParkList';
+
+import 'bootstrap/dist/css/bootstrap.css';
+import ParkDropDown from '../park/ParkDropDown';
 
 
 
@@ -11,9 +15,12 @@ import ParkList from '../_mock/ParkList';
 
 const { kakao } = window;
 export default function ParkInfo() {
+  
+  const [area, setArea] = useState(null);
   const [parks, setParks] = useState(null);
-  const [selectedPlace, setSelectedPlace] = useState(null);
-  const [visible, setVisible] = useState(false);
+  const [selectedPlace, setSelectedPlace] = useState([]);
+  let markedPlace = null;
+  let selectedLocation = null;
 
     useEffect(() => {
       const loadData = async () => {
@@ -33,76 +40,94 @@ export default function ParkInfo() {
           center: new kakao.maps.LatLng(37.5735, 126.9758875),
           level: 7,
         };
-        // eslint-disable-next-line
+        const map = new kakao.maps.Map(container, options);
+        };
+
+      // 클릭하면 마커 표시할 데이터 불러오기
+      const clickData = (parks) => {
+        const [lat, lng] = selectedLocation ? selectedLocation.split(',') : null;
+        const container = document.getElementById("myMap");
+        const options = {
+          center: new kakao.maps.LatLng(lat,lng),
+          level: 7,
+        };
+
         const map = new kakao.maps.Map(container, options);
 
-        };
-        
-        // 클릭하면 마커 표시할 데이터 불러오기
-        const clickData = (parks) => {
-          const container = document.getElementById("myMap");
-          const options = {
-            center: new kakao.maps.LatLng(37.5735, 126.9758875),
-            level: 7,
-          };
-      
-          const map = new kakao.maps.Map(container, options);
+          parks.forEach((park) => {
+            const position = new kakao.maps.LatLng(park.LATITUDE, park.LONGITUDE)
+            const marker = new kakao.maps.Marker({
+                map,
+            position: position,
+            clickable: true
+            });
 
-            parks.forEach((park) => {
-              const marker = new kakao.maps.Marker({
-                  map,
-              position: new kakao.maps.LatLng(park.LATITUDE, park.LONGITUDE),
-              text:park.P_PARK
-              });
-              marker.id=park.P_IDX
-              const infowindow = new kakao.maps.InfoWindow({
-                content: park.P_PARK
-              });
-              
-              // 마우스 올리면 이름 표시하기
+            marker.id=park.P_IDX;
+            
+            const infowindow = new kakao.maps.InfoWindow({
+              content: park.P_PARK,
+              removable : true
+            });
+        
+            // 마커 클릭하면 해당 장소 정보 저장
+            kakao.maps.event.addListener(marker, 'click', () => {
+              setSelectedPlace(park);
+              markedPlace = marker
+            });
+
+            // 마우스 올리면 이름 표시하기
             kakao.maps.event.addListener(
               marker,
               "mouseover",
               makeOverListener(map, marker, infowindow)
             );
-            // 마우스 치우면 이름 표시 지우기
+
+            // 마우스 치우면 이름 표시 지우기(클릭한 애는 빼고)
             kakao.maps.event.addListener(
               marker,
-              "mouseout",
-              marker.id===parks[marker.id].P_IDX ? console.log('') : makeOutListener(infowindow)
-            );
-            
-              // 마커 클릭하면 해당 장소 정보 저장
-              // eslint-disable-next-line
-              kakao.maps.event.addListener(marker, 'click', (e) => {
-                infowindow.close();
-                setVisible(!visible)
-                setSelectedPlace(park);
-                infowindow.open(marker);
-              });
-              }) 
-              
-              // 마우스 올리고 내릴때 정보창 켰다껐다하기
-              function makeOverListener(map, marker, infowindow) {
-                return function clickOpen() {
-                  infowindow.open(map, marker);
-                };
-              }
-              function makeOutListener(infowindow) {
-                return function clickClose() {
+              "mouseout", () => {
+                if (markedPlace===null || markedPlace.id !== marker.id) {
                   infowindow.close();
-                };
+              }else{
+                infowindow.open(map, marker);
               }
+              }
+            );
 
-      };
+            // 마우스 올릴때 정보창 켜기
+            function makeOverListener(map, marker, infowindow) {
+              return function () {
+                infowindow.open(map, marker);
+              };
+            }
+
+            }) 
+    };
+
+    // 지역 선택 select의 option 값 배열 만들기 
+    const areaArray = area ? 
+    area.map ( (el,index) => (<option key={index} value={el.Y_CRDNT_VALUE+','+el.X_CRDNT_VALUE}>{el.ATDRC_NM}</option>) ): null
     
+    //지역 선택하면 지도에 마커 표시, 해당 지역으로 지도 이동하기
+    const setMapData = (event) => {
+      selectedLocation = event.target.value;
+      clickData(parks);
+    };
+
     return (
         <>
             <Helmet>
                 <title>공원 조회 서비스</title>
             </Helmet>
             <Container>
-            <button type="button" onClick={clickData.bind(null,parks)}>공원 위치 보기</button>
+            { area ? 
+            <select id="seletLocation" className="form-select" onChange={setMapData} aria-label="Default select example" style={{width:"200px",backgroundColor:"lightgray",border:"0px",}}>
+              <option defaultValue>지역 선택하기</option>
+              {areaArray}
+            </select>
+            : <div>''</div> }
+            
+            <br /><br />
                 <div id='myMap'
                     style={{
                     width: 1000,
@@ -111,8 +136,9 @@ export default function ParkInfo() {
                 <br/><br/>
             </Container>
             <Container>
-              {visible ? <ParkList park={selectedPlace} /> : ''}
+              {selectedPlace ? <ParkList park={selectedPlace} /> : <div></div>}
             </Container>
+            <ParkDropDown setArea={setArea} />
         </>
     );
 }

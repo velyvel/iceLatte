@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 const AbandonedList = () => {
 
     const [abLists, setAbLists] = useState(null);
+    const [search, setSearch] = useState(null);
     const clickHandler = async () => {
 
         const serviceKey = "eMVfxUA%2FWCe5PDwQ%2FyOQYpyG8CN7YSnS5d1WIsyaPbpWB8XA5Y3frj21E9fUde73lxbrhL%2FZOZxxQveKRpOFkQ%3D%3D";
@@ -12,6 +13,22 @@ const AbandonedList = () => {
         const response = await axios.get(url);
         setAbLists(response.data.response.body.items.item);
 
+
+        const onChangeSearch = (e) => {
+            e.preventDefault();
+            setSearch(e.target.value);
+        };
+
+        // const onSearch = (e) => {
+        //     e.preventDefault();
+        //     if(search === null || search === ''){
+        //         axios.get(url)
+        //             .then(response)=> {
+        //             set
+        //         }
+        //     }
+        // }
+        
 
     };
 
