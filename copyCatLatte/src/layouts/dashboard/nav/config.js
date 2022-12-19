@@ -17,6 +17,16 @@ const navConfig = [
     icon: icon('ic_user'),
   },
   {
+    title: '동물병원 찾기',
+    path: '/dashboard/hospital',
+    icon: icon('ic_analytics'),
+  },
+  {
+    title: '음악추천',
+    path: '/dashboard/recommendationEx',
+    icon: icon('ic_cart'),
+  },
+  {
     title: '유기동물 조회, 구조',
     path: '/dashboard/recommendation/abandoned/abandonedHome',
     icon: icon('shelter'),
