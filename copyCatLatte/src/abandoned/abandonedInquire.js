@@ -65,6 +65,9 @@ export default function abandonedInquire() {
         const map = new kakao.maps.Map(container, options);
 
     }, []);
+    // ==========================================================================================================
+
+
 
     return (
         <>

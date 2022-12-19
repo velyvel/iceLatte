@@ -1,105 +1,115 @@
-import {useEffect, useRef, useState} from "react";
-import styled from 'styled-components';
-import {Slide} from "@mui/material";
-// ===============================================================================
+import { Helmet } from 'react-helmet-async';
+import axios from "axios";
+import React, { useEffect, useState } from 'react';
+// @mui
+import { Container } from '@mui/material';
+import ShelterList from "../_mock/ShelterList";
 
-const TOTAL_SLIDES = 3;
-const img1 = <img src="/assets/images/image/1.jpg" alt="..."/>;
-const img2 = <img src="/assets/images/image/2.jpg" alt="..."/>;
-const img3 = <img src="/assets/images/image/3.jpg" alt="..."/>;
 
-const AbandonedHome = ()=> {
 
-    const [currentSlide, setCurrentSlide] = useState(0);
-    const slideRef = useRef(null);
+// ----------------------------------------------------------------------
 
-    // Next 버튼 클릭 시
-    const nextSlide = () => {
-        if (currentSlide >= TOTAL_SLIDES) {
-            setCurrentSlide(0);
-        } else {
-            setCurrentSlide(currentSlide + 1);
-        }
-    };
-    const prevSlide = () => {
-        if (currentSlide === 0) {
-            setCurrentSlide(TOTAL_SLIDES);
-        } else {
-            setCurrentSlide(currentSlide - 1);
-        }
-    };
+const { kakao } = window;
+export default function ParkInfo() {
+    const [shelters, setShelters] = useState(null);
+    const [selectedPlace, setSelectedPlace] = useState(null);
+    const [visible, setVisible] = useState(false);
 
     useEffect(() => {
-        slideRef.current.style.transition = 'all 0.5s ease-in-out';
-        slideRef.current.style.transform = `translateX(-${currentSlide}00%)`;
-    }, [currentSlide]);
+        const loadData = async () => {
+            const url = 'http://openAPI.seoul.go.kr:8088/4d514f786b79757337386270766a6d/json/SearchParkInfoService/1/131/';
+            const response = await axios.get(url);
+            const dataCluster = JSON.stringify(response.data.SearchParkInfoService.row);
+            const dataList = JSON.parse(dataCluster);
+            setShelters(dataList);
+        }
+        loadData();
+        mapscript();
+    }, []);
 
+    const mapscript = () => {
+        const container = document.getElementById("myMap");
+        const options = {
+            center: new kakao.maps.LatLng(37.5735, 126.9758875),
+            level: 7,
+        };
+        // eslint-disable-next-line
+        const map = new kakao.maps.Map(container, options);
 
-    return(
+    };
+
+    const searchShelter = (shelters) => {
+        const container = document.getElementById("myMap");
+        const options = {
+            center: new kakao.maps.LatLng(37.5735, 126.9758875),
+            level: 7,
+        };
+
+        const map = new kakao.maps.Map(container, options);
+
+        shelters.forEach((park) => {
+            const marker = new kakao.maps.Marker({
+                map,
+                position: new kakao.maps.LatLng(park.LATITUDE, park.LONGITUDE),
+                text:park.P_PARK
+            });
+            marker.id=park.P_IDX
+            const infowindow = new kakao.maps.InfoWindow({
+                content: park.P_PARK
+            });
+
+            kakao.maps.event.addListener(
+                marker,
+                "mouseover",
+                makeOverListener(map, marker, infowindow)
+            );
+            kakao.maps.event.addListener(
+                marker,
+                "mouseout",
+                marker.id===shelters[marker.id].P_IDX ? console.log('') : makeOutListener(infowindow)
+            );
+
+            // eslint-disable-next-line
+            kakao.maps.event.addListener(marker, 'click', (e) => {
+                infowindow.close();
+                setVisible(!visible)
+                setSelectedPlace(shelters);
+                infowindow.open(marker);
+            });
+        })
+
+        function makeOverListener(map, marker, infowindow) {
+            return function clickOpen() {
+                infowindow.open(map, marker);
+            };
+        }
+        function makeOutListener(infowindow) {
+            return function clickClose() {
+                infowindow.close();
+            };
+        }
+
+    };
+
+    return (
         <>
+            <Helmet>
+                <title>보호소 리스트 조회</title>
+            </Helmet>
             <Container>
-                <Text>
-                    <h3>유기동물 관련 페이지입니다</h3>
-                    <p>{currentSlide + 1}번 째 사진</p>
-                </Text>
-                <SliderContainer ref={slideRef}>
-                        <div className="carousel-inner">
-                            <div className="carousel-item active">
-                                <img src="/assets/images/image/1.jpg" alt="..." style={{opacity:'30%', borderRadius:'20px'}}/>
-                                <div className="carousel-caption d-none d-md-block">
-                                    <h5 style={{color:'darkcyan'}}>유기동물 리스트를 검색</h5>
-                                    <p style={{color:'black'}}>유기동물 리스트를 검색할 수 있습니다.</p>
-                                </div>
-                            </div>
-                        </div>
-                </SliderContainer>
-                <Center>
-                    <Button onClick={prevSlide}>Prev</Button>
-                    <Button onClick={nextSlide}>Next</Button>
-                </Center>
+                <button type="button" onClick={searchShelter.bind(null,shelters)}>보호소 위치 확인</button>
+                <div id='myMap'
+                     style={{
+                         width: 1000,
+                         height: 500
+                     }} />
+                <br/><br/>
+            </Container>
+            <Container>
+                {/* eslint-disable-next-line react/no-unknown-property */}
+                {visible ? <shelterList shelterList ={selectedPlace} /> : ''}
             </Container>
         </>
     );
 }
 
-
-const Container = styled.div`
-  width: 500px;
-  margin: auto;
-  height: 1000px;
-  overflow: hidden;
-`;
-const Button = styled.div`
-  all: unset;
-  padding: 1em 2em;
-  margin: 2em 2em;
-  color: darkcyan;
-  border-radius: 10px;
-  border: 1px solid darkcyan;
-  cursor: pointer;
-  &:hover {
-    background-color: darkcyan;
-    color: #fff;
-  }
-`;
-const SliderContainer = styled.div`
-  margin: 0 auto;
-  margin-bottom: 2em;
-  display: flex; // 이미지들을 가로로 나열합니다.
-`;
-const Text = styled.div`
-  text-align: center;
-  color: darkcyan;
-  p {
-    color: #fff;
-    font-size: 20px;
-    background-color: darkcyan;
-    display: inline-block;
-    border-radius:20px;
-    padding: 0.3em 0.7em;
-  }
-`;
-const Center = styled.div`
-  text-align: center;
-`;
-export default AbandonedHome;
