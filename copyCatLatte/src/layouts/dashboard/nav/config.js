@@ -17,7 +17,7 @@ const navConfig = [
     icon: icon('ic_user'),
   },
   {
-    title: 'Hospital',
+    title: '동물병원 찾기',
     path: '/dashboard/hospital',
     icon: icon('ic_analytics'),
   },
