@@ -9,6 +9,7 @@ import LandingPage from './pages/LandingPage';
 import UserPage from './pages/UserPage';
 import LoginPage from './pages/LoginPage';
 import Page404 from './pages/Page404';
+import HospitalPage from './pages/HosptialPage';
 import RecommendationExPage from './pages/recommendationExPage';
 import RecommendationPage from './pages/recommendationPage';
 import DashboardAppPage from './pages/DashboardAppPage';
@@ -41,6 +42,7 @@ export default function Router() {
 
 
         { path: 'recommendationEx', element: <RecommendationExPage /> },
+        { path: 'hospital', element: <HospitalPage /> },
         { path: 'recommendation',
           element: <RecommendationPage />,
           children: [
