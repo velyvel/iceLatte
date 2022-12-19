@@ -12,7 +12,7 @@ import BreedItemOption from './Breeds/BreedItemOption';
 const RecommendationSearch=()=>{
     const [breeds, setBreeds] = useState([]);
     const [selectedBreedInfo, setSelectedBreedInfo] = useState([]);
-    const [selectedV, setSelectedV] = useState("");
+    const [selectedV, setSelectedV] = useState("abys");
     const [breedImg, setBreedImg] = useState([]);
     const [papago, setPapago] = useState([]);
 
