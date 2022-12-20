@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React, {useEffect, useState} from 'react';
 import {Outlet} from 'react-router-dom';
 // @mui
@@ -5,56 +7,54 @@ import {Container} from '@mui/material';
 import axios from "axios";
 // ----------------------------------------------------------------------
 
+// TODO onchange
+
 const {kakao} = window;
-export default function abandonedInquire() {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [selectedSido, setSelectedSido] = useState(null);
-    const handleSidoSelect = (e) => {
-        setSelectedSido(e.target.value);
-    };
+const abandonedInquire=() =>{
 
+    const [ sidoList, setSidoList ] = useState([]);
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [selectedSigungu, setSelectedSigungu] =  useState(null);
-    const handleSigunguSelect = (e) => {
-        setSelectedSigungu(e.target.value)
-        // .append('<option value ="` + {item.orgCd} + `">' + {orgdownNm} +'</option>');
-    };
+    const [selectedSido, setSelectedSido] = useState([]);
 
-    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [ sigunguList, setSigunguList] = useState([]);
+    // eslint-disable-next-line
+    const [selectedSigungu, setSelectedSigungu] = useState([]);
+
+    const type = "json";
+    const serviceKey = "eMVfxUA%2FWCe5PDwQ%2FyOQYpyG8CN7YSnS5d1WIsyaPbpWB8XA5Y3frj21E9fUde73lxbrhL%2FZOZxxQveKRpOFkQ%3D%3D";
+
+
+    //  ============================================================== eslint-disable-next-line react-hooks/rules-of-hooks
     const [shelters, setshelters] = useState(null);
     const searchHandler = async () =>
     {
-        const type = "json"
-        const uprCd = "6110000";
+
+        const uprCd = selectedSido;
+        const orgCd = selectedSigungu;
         const serviceKey = "eMVfxUA%2FWCe5PDwQ%2FyOQYpyG8CN7YSnS5d1WIsyaPbpWB8XA5Y3frj21E9fUde73lxbrhL%2FZOZxxQveKRpOFkQ%3D%3D";
-        const shelterUrl = `https://apis.data.go.kr/1543061/abandonmentPublicSrvc/shelter?serviceKey=${serviceKey}&upr_cd=${uprCd}&org_cd=3220000&_type=${type}`;
+        const shelterUrl = `https://apis.data.go.kr/1543061/abandonmentPublicSrvc/shelter?serviceKey=${serviceKey}&upr_cd=${uprCd}&org_cd=${orgCd}&_type=${type}`;
         axios.get(shelterUrl)
             .then((response) => {
+                console.log(response)
                 setshelters(response.data.response.body.items.item)
             });
     };
-    // 질문: orgCd = uprCd; 이거 처리 어떻게?
-    // 시, 도 조회 ----------------------------------------------------------------------
+    // TODO
+    const detailHandler = async () => {
+        const careRegNo = "";
+        const careNm = "";
+        const detailUrl = `https://apis.data.go.kr/1543061/animalShelterSrvc/shelterInfo?serviceKey=${serviceKey}&care_reg_no=${careRegNo}&care_nm=${careRegNo}&numOfRows=3&pageNo=1&_type=${type}`
+    }
+    //  ----------------------------------------------------------------------
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(() => {
-        // http://apis.data.go.kr/1543061/abandonmentPublicSrvc/sigungu?serviceKey=eMVfxUA%2FWCe5PDwQ%2FyOQYpyG8CN7YSnS5d1WIsyaPbpWB8XA5Y3frj21E9fUde73lxbrhL%2FZOZxxQveKRpOFkQ%3D%3D
-        const type = "json"
-        const serviceKey = "eMVfxUA%2FWCe5PDwQ%2FyOQYpyG8CN7YSnS5d1WIsyaPbpWB8XA5Y3frj21E9fUde73lxbrhL%2FZOZxxQveKRpOFkQ%3D%3D";
+
         const sidoUrl = `https://apis.data.go.kr/1543061/abandonmentPublicSrvc/sido?serviceKey=${serviceKey}&numOfRows=17&pageNo=1&_type=${type}`;
         axios.get(sidoUrl)
             .then( (response) => {
-                setSelectedSido(response.data.response.body.items.item);
+                setSidoList(response.data.response.body.items.item);
+                findSigunguList(response.data.response.body.items.item[0].orgCd);
             });
-        // 시, 군, 구 조회 ----------------------------------------------------------------------
-        // const uprCd = "6110000";
-        const uprCd = ["6110000","6260000","6270000","6280000","6290000","5690000","6300000","6310000","6410000","6420000","6430000","6440000","6450000", "6460000","6470000","6480000","6500000", ]
-        const sigunguUrl = `https://apis.data.go.kr/1543061/abandonmentPublicSrvc/sigungu?serviceKey=${serviceKey}&upr_cd=${uprCd}&_type=${type}`;
-        axios.get(sigunguUrl)
-            .then((response)=>{
-                setSelectedSigungu(response.data.response.body.items.item)
-            });
-
-        // 보호소 검색----------------------------------------------------------------------
 
 
         const container = document.getElementById('myMap');
@@ -65,6 +65,26 @@ export default function abandonedInquire() {
         const map = new kakao.maps.Map(container, options);
 
     }, []);
+
+    const handleSigungu = (e) => {
+        setSelectedSigungu(e.target.value);
+    }
+
+    const onChange = (e) => {
+        setSelectedSido(e.target.value);
+        findSigunguList(e.target.value);
+
+    };
+
+    const findSigunguList = (selectedSido1) => {
+        // const uprCd = ["6110000","6260000","6270000","6280000","6290000","5690000","6300000","6310000","6410000","6420000","6430000","6440000","6450000", "6460000","6470000","6480000","6500000", ]
+        const sigunguUrl = `https://apis.data.go.kr/1543061/abandonmentPublicSrvc/sigungu?serviceKey=${serviceKey}&upr_cd=${selectedSido1}&_type=${type}`;
+        axios.get(sigunguUrl)
+            .then((response)=>{
+                setSigunguList(response.data.response.body.items.item);
+                // searchHandler(response.data.response.body.items.item[0].orgCd);
+            });
+    }
 
     return (
         <>
@@ -78,9 +98,9 @@ export default function abandonedInquire() {
                                 {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
                                 <label className="mb-2">시, 도 조회</label>
                                 <select className="form-select form-select-sm mb-1" aria-label=".form-select-lg example"
-                                        defaultValue="시, 도 조회">
+                                        defaultValue="시, 도 조회" onChange={onChange}>
                                     {
-                                        selectedSido? selectedSido.map((item, idx)=> (
+                                        sidoList? sidoList.map((item, idx)=> (
                                                     <option value={item.orgCd} key={item.orgCd}>{item.orgdownNm}</option>
                                                 )
                                             )
@@ -92,10 +112,10 @@ export default function abandonedInquire() {
                             <div className="form-group col-md-4">
                                 {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
                                 <label className="mb-2">시, 군, 구 조회</label>
-                                <select onChange={handleSigunguSelect} className="form-select form-select-sm mb-1" aria-label=".form-select-lg example"
-                                        defaultValue="시, 군, 구 조회">
+                                <select className="form-select form-select-sm mb-1" aria-label=".form-select-lg example"
+                                        defaultValue="시, 군, 구 조회" onChange={handleSigungu}>
                                     {
-                                        selectedSigungu? selectedSigungu.map((item, idx)=> (
+                                        sigunguList? sigunguList.map((item, idx)=> (
                                                     <option value={item.orgCd} key={item.orgCd}>{item.orgdownNm}</option>
                                                 )
                                             )
@@ -104,9 +124,32 @@ export default function abandonedInquire() {
                                 </select>
                             </div>
 
+
                             <div className="form-group col-md-3">
                                 <button type={"button"} className="btn btn-secondary" onClick={searchHandler}>조회하기</button>
                             </div>
+                        </div>
+
+                        <div>
+                            <table className="table table-hover">
+                                <thead>
+                                <th/>
+                                <th/>
+                                </thead>
+                                <tbody>
+                                { shelters ?
+                                    shelters.map( (item, idx) => (
+                                            <tr key={idx}>
+                                                <td>{ item.careNm }</td>
+                                                <td><button className="btn btn-outline-primary">상세보기</button></td>
+                                            </tr>
+                                        )
+                                    )
+                                    :
+                                    <tr/>
+                                }
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -119,27 +162,10 @@ export default function abandonedInquire() {
                      }}/>
                 <br/><br/>
 
-                <button type={"button"} className="btn btn-primary" onClick={searchHandler}>유기동물 리스트</button>
-                <table className="table table-hover">
-                    <thead>
-                    <th/>
-                    </thead>
-                    <tbody>
-                    { shelters ?
-                        shelters.map( (item, idx) => (
-                                <tr key={idx}>
-                                    <td>{ item.careNm }</td>
-                                </tr>
-                            )
-                        )
-                        :
-                        <tr/>
-                    }
-                    </tbody>
-                </table>
-
                 <Outlet/>
             </Container>
         </>
     );
 }
+
+export default React.memo(abandonedInquire);

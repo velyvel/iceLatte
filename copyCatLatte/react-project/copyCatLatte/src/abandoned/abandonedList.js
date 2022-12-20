@@ -2,6 +2,8 @@ import React, {useState} from "react";
 import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.css';
 
+//  TODO 검색기능 구현하기
+
 const AbandonedList = () => {
 
     const [abLists, setAbLists] = useState(null);
