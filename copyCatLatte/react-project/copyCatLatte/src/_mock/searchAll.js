@@ -1,11 +1,11 @@
 
 // ----------------------------------------------------------------------
 
-const recommendation = () => {
+const searchAll = () => {
 
   return {
 
   };
 };
 
-export default recommendation;
+export default searchAll;

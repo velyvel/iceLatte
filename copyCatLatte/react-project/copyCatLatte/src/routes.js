@@ -10,7 +10,6 @@ import UserPage from './pages/UserPage';
 import LoginPage from './pages/LoginPage';
 import Page404 from './pages/Page404';
 import HospitalPage from './pages/HosptialPage';
-import RecommendationExPage from './pages/recommendationExPage';
 import RecommendationPage from './pages/recommendationPage';
 import DashboardAppPage from './pages/DashboardAppPage';
 import AbandonedList from "./abandoned/abandonedList";
@@ -21,6 +20,8 @@ import ParkInfo from './pages/ParkInfo';
 import RecommendationRandom from './PetRecommendation/RecommendationRandom';
 import RecommendationSearch from './PetRecommendation/RecommendationSearch';
 import AbandonedHome from "./abandoned/abandonedHome";
+import BlogSearch from "./search/blogSearch";
+import SearchAllPage from "./pages/searchAllPage";
 
 
 // ----------------------------------------------------------------------
@@ -34,14 +35,19 @@ export default function Router() {
         { element: <Navigate to="/" />, index: true },
         { path: 'app', element: <DashboardAppPage /> },
         { path: 'user', element: <UserPage />,
-        children: [
-          { path: 'PetRecommendation/RecommendationRandom', element: <RecommendationRandom /> },
-          { path: 'PetRecommendation/RecommendationSearch', element: <RecommendationSearch /> }
+          children: [
+            { path: 'PetRecommendation/RecommendationRandom', element: <RecommendationRandom /> },
+            { path: 'PetRecommendation/RecommendationSearch', element: <RecommendationSearch /> }
 
-        ] },
+          ] },
 
 
-        { path: 'recommendationEx', element: <RecommendationExPage /> },
+        { path: 'searchAll',
+          element: <SearchAllPage />,
+          children:[
+            { path: 'search/blogSearch', element: <BlogSearch/>}
+          ]
+        },
         { path: 'hospital', element: <HospitalPage /> },
         { path: 'recommendation',
           element: <RecommendationPage />,

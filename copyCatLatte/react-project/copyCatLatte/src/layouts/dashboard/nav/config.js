@@ -22,8 +22,8 @@ const navConfig = [
     icon: icon('ic_analytics'),
   },
   {
-    title: '음악추천',
-    path: '/dashboard/recommendationEx',
+    title: '모든 검색',
+    path: '/dashboard/searchAll',
     icon: icon('ic_cart'),
   },
   {

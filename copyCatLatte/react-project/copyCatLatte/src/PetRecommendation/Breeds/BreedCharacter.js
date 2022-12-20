@@ -1,3 +1,4 @@
+/* eslint-disable */
 import Rating from 'react-rating';
 
 
