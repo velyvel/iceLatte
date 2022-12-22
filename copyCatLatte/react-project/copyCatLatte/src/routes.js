@@ -22,8 +22,6 @@ import RecommendationSearch from './PetRecommendation/RecommendationSearch';
 import AbandonedHome from "./abandoned/abandonedHome";
 import BlogSearch from "./search/blogSearch";
 import SearchAllPage from "./pages/searchAllPage";
-
-
 // ----------------------------------------------------------------------
 
 export default function Router() {
@@ -55,8 +53,7 @@ export default function Router() {
             { path: 'abandoned/abandonedHome', element: <AbandonedHome /> },
             { path: 'abandoned/abandonedList', element: <AbandonedList /> },
             { path: 'abandoned/abandonedInquire', element: <AbandonedInquire /> },
-            { path: 'abandoned/abandonedChart', element: <AbandonedChart /> }
-
+            { path: 'abandoned/abandonedChart', element: <AbandonedChart /> },
           ]
         },
         { path: 'blog', element: <BlogPage /> },

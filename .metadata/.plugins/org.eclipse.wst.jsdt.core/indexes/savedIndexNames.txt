@@ -1,8 +1,6 @@
-INDEX VERSION 1.4+/Users/sulim/Documents/dev/spings/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
-1803632834.index
+INDEX VERSION 1.4+/Users/sulim/Documents/dev/iceLatte/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+3768996070.index
+1705588815.index
 2354705757.index
-2141687285.index
-3806786782.index
-1205733104.index
-51931076.index
-3853273194.index
+952684132.index
+714106167.index

@@ -1,3 +1,5 @@
+/*eslint-disable*/
+
 import styled from 'styled-components';
 import React from 'react';
 import Chart from 'chart.js/auto';
@@ -163,6 +165,7 @@ const options = {
         },
     }
 };
+
 
 
 const abandonedChart = () => {
