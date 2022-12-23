@@ -4,12 +4,12 @@ import axios from "axios";
 import React, { useEffect, useState } from 'react';
 // @mui
 import { Container } from '@mui/material';
-import ParkList from '../park/ParkList';
-
 import 'bootstrap/dist/css/bootstrap.css';
+
+import ParkList from '../park/ParkList';
 import ParkDropDown from '../park/ParkDropDown';
-
-
+import ParkWeatherSet from '../park/ParkWeatherSet';
+import ParkWeather from '../park/ParkWeather';
 
 // ----------------------------------------------------------------------
 
@@ -21,6 +21,9 @@ export default function ParkInfo() {
   const [selectedPlace, setSelectedPlace] = useState([]);
   let markedPlace = null;
   let selectedLocation = null;
+
+  const [weather, setWeather] = useState(null);
+  const [today, setToday] = useState(null);
 
     useEffect(() => {
       const loadData = async () => {
@@ -100,7 +103,6 @@ export default function ParkInfo() {
                 infowindow.open(map, marker);
               };
             }
-
             }) 
     };
 
@@ -112,6 +114,7 @@ export default function ParkInfo() {
     const setMapData = (event) => {
       selectedLocation = event.target.value;
       clickData(parks);
+      ParkWeather({setWeather, selectedLocation});
     };
 
     return (
@@ -121,13 +124,25 @@ export default function ParkInfo() {
             </Helmet>
             <Container>
             { area ? 
-            <select id="seletLocation" className="form-select" onChange={setMapData} aria-label="Default select example" style={{width:"200px",backgroundColor:"lightgray",border:"0px",}}>
+            <select id="seletLocation" className="form-select" onChange={setMapData.bind()} style={{width:"200px",backgroundColor:"lightgray",border:"0px",}}>
               <option defaultValue>지역 선택하기</option>
               {areaArray}
             </select>
-            : <div>''</div> }
+            :
+            <select className="form-select" style={{width:"200px",backgroundColor:"lightgray",border:"0px",}}>
+              <option defaultValue>지역 선택하기</option>
+            </select>
+            }
+            <br />
+            <Container>
+            { weather ? 
+            <ParkWeatherSet weather={weather} />
+            :
+            <div>지역을 선택하세요</div>
+          }              
+            </Container>
             
-            <br /><br />
+            <br />
                 <div id='myMap'
                     style={{
                     width: 1000,
