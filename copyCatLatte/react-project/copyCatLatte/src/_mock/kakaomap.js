@@ -43,7 +43,7 @@ const Kakaomap = ({ searchPlace }) => {
         // 검색결과 목록 하단에 페이지 번호 표시
         function displayPagination(pagination) {
 
-            var paginationEl = document.getElementById('pagination'),
+            var paginationEl = document.getElementById('pagination.js'),
                 fragment = document.createDocumentFragment(),
                 i
 

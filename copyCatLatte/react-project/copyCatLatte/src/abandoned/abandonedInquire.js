@@ -1,6 +1,6 @@
 /*eslint-disable*/
 // response.data.response.body.items.item[0].careNm
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useMemo, useRef, useState} from 'react';
 import {Outlet} from 'react-router-dom';
 // @mui
 import {Container} from '@mui/material';
@@ -12,16 +12,18 @@ const type = "json";
 const serviceKey = "eMVfxUA%2FWCe5PDwQ%2FyOQYpyG8CN7YSnS5d1WIsyaPbpWB8XA5Y3frj21E9fUde73lxbrhL%2FZOZxxQveKRpOFkQ%3D%3D";
 const {kakao} = window;
 
-const container = document.getElementById('myMap');
-const options = {
-    center: new kakao.maps.LatLng(37.64978, 126.87009),
-    level: 3
-};
+// const container = document.getElementById('myMap');
+// const options = {
+//     center: new kakao.maps.LatLng(37.64978, 126.87009),
+//     level: 3
+// };
 
 const abandonedInquire=() =>{
 
     const [ sidoList, setSidoList ] = useState([]);
     const [selectedSido, setSelectedSido] = useState([]);
+
+    const markers = useRef([])
 
     useEffect(() => {
 
@@ -79,39 +81,51 @@ const abandonedInquire=() =>{
         const sheDetailUrl =  `https://apis.data.go.kr/1543061/animalShelterSrvc/shelterInfo?serviceKey=${serviceKey}&care_reg_no=${careRegNo}&_type=${type}`;
         axios.get(sheDetailUrl)
             .then((response) => {
-                console.log(response.data.response.body.items.item[0])
-                debugger
+                // TODO
+
                 try {
+                    markers.current.forEach((marker) => {
+                        marker.setMap(null);
+                    });
+                    markers.current.splice(0, markers.current.length);
+
+                    const { lat, lng } = response.data.response.body.items.item[0];
+                    if (!Boolean(lat) || !Boolean(lng)) {
+                        alert('보호소 위치 정보가 없습니다.');
+                        return;
+                    }
+
                     setSelectedShelter(response.data.response.body.items.item[0]);
 
-                    const myMap = new kakao.maps.Map(container, options);
-
-                    const markerPosition = new kakao.maps.LatLng(`{setSelectedShelter(response.data.response.body.items.item[0]}`,`{setSelectedShelter(response.data.response.body.items.item[0]}`);
+                    const markerPosition = new kakao.maps.LatLng(lat, lng);
                     const marker = new kakao.maps.Marker({
                         position:markerPosition
                     });
-                    marker.setMap(myMap);
+                    marker.setMap(map);
+                    markers.current.push(marker);
 
                 } catch(e) {
-
+                    alert('보호소 상세 정보가 없습니다.');
 
                 }
             });
     }
+    const mapScript = () => {
+        const container = document.getElementById("myMap");
+        const options = {
+            center: new kakao.maps.LatLng(33.450701, 126.570667),
+            level: 10,
+        };
+        const map = new kakao.maps.Map(container, options);
+        setMap(map);
+    };
 
-
+    const [map, setMap] = useState( null );
     useEffect(()=>{
         mapScript();
     },[]);
 
-    const mapScript = () => {
-        const container = document.getElementById("myMap");
-        const options = {
-            center: new kakao.maps.LatLng(37.5735, 126.9758875),
-            level: 3,
-        };
-        const map = new kakao.maps.Map(container, options);
-    };
+
 
 
             //===============================MapContainer================================================================
