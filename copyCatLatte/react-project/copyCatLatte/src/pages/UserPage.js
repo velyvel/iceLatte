@@ -39,8 +39,8 @@ export default function UserPage() {
         </Stack>
         
         <div style={{padding: 20}}>
-            [<Link to="PetRecommendation/RecommendationRandom">랜덤조회</Link>]
-            [<Link to="PetRecommendation/RecommendationSearch">검색</Link>]
+            [<Link to="PetRecommendation/RecommendationDog">강아지 종 조회</Link>]
+            [<Link to="PetRecommendation/RecommendationSearch">고양이 종 조회</Link>]
             <hr/>
         </div>
 
