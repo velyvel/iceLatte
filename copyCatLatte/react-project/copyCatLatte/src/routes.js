@@ -4,8 +4,6 @@ import DashboardLayout from './layouts/dashboard';
 import SimpleLayout from './layouts/simple';
 //
 import BlogPage from './pages/BlogPage';
-import BlogSearchPage from './pages/BlogSearchPage';
-import LandingPage from './pages/LandingPage';
 import UserPage from './pages/UserPage';
 import LoginPage from './pages/LoginPage';
 import Page404 from './pages/Page404';
@@ -16,12 +14,17 @@ import AbandonedList from "./abandoned/abandonedList";
 import AbandonedInquire from "./abandoned/abandonedInquire";
 import AbandonedChart from "./abandoned/abandonedChart";
 import ParkInfo from './pages/ParkInfo';
-
 import RecommendationDog from './PetRecommendation/RecommendationDog';
 import RecommendationSearch from './PetRecommendation/RecommendationSearch';
 import AbandonedHome from "./abandoned/abandonedHome";
-import BlogSearch from "./search/blogSearch";
+import WebSearchs from './searchs/WebSearchs';
+import VClipSearchs from './searchs/VClipSearchs';
+import ImageSearchs from './searchs/ImageSearchs';
+import BlogSearchs from "./searchs/BlogSearchs";
+import BookSearchs from './searchs/BookSearchs';
+import CafeSearchs from './searchs/CafeSearchs';
 import SearchAllPage from "./pages/searchAllPage";
+import KakaoMapSearchs from './searchs/KakaoMapSearchs';
 // ----------------------------------------------------------------------
 
 export default function Router() {
@@ -43,7 +46,13 @@ export default function Router() {
         { path: 'searchAll',
           element: <SearchAllPage />,
           children:[
-            { path: 'search/blogSearch', element: <BlogSearch/>}
+              { path: 'searchs/WebSearchs', element: <WebSearchs/>},
+              { path: 'searchs/VClipSearchs', element: <VClipSearchs/>},
+              { path: 'searchs/ImageSearchs', element: <ImageSearchs/>},
+              { path: 'searchs/BlogSearchs', element: <BlogSearchs/>},
+              { path: 'searchs/BookSearchs', element: <BookSearchs/>},
+              { path: 'searchs/CafeSearchs', element: <CafeSearchs/>},
+              { path: 'searchs/KakaoMapSearchs', element: <KakaoMapSearchs/>}
           ]
         },
         { path: 'hospital', element: <HospitalPage /> },
@@ -57,8 +66,6 @@ export default function Router() {
           ]
         },
         { path: 'blog', element: <BlogPage /> },
-        { path: 'blogsearch', element: <BlogSearchPage /> },
-        { path: 'kakaomap', element: <LandingPage /> },
         { path: 'parkinfo', element: <ParkInfo /> }
       ],
     },

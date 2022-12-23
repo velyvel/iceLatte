@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Kakaomap from '../_mock/kakaomap'
+import Kakaomap from '../search/kakaomap'
 
 function LandingPage() {
   const [InputText, setInputText] = useState('')

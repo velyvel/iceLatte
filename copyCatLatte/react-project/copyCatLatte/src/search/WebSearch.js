@@ -1,4 +1,4 @@
-/* eslint-disable */
+ /* eslint-disable */
 import axios from "axios";
 
 const Kakao = axios.create({
@@ -8,7 +8,7 @@ const Kakao = axios.create({
   }
 });
 
-// search blog api
-export const blogSearch = params => {
-  return Kakao.get("/v2/search/blog", { params });
+// search web api
+export const WebSearch = params => {
+  return Kakao.get("/v2/search/web", { params });
 };
