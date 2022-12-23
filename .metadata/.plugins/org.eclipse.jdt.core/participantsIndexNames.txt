@@ -1,3 +1,5 @@
 INDEX VERSION 1.131
 /Users/sulim/Documents/dev/spings/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/1205733104.index
 /copyCatLatte/src/main/java
+/Users/user/Documents/iceLatte/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/1205733104.index
+/copyCatLatte/src/main/java
