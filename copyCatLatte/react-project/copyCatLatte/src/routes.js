@@ -17,7 +17,7 @@ import AbandonedInquire from "./abandoned/abandonedInquire";
 import AbandonedChart from "./abandoned/abandonedChart";
 import ParkInfo from './pages/ParkInfo';
 
-import RecommendationRandom from './PetRecommendation/RecommendationRandom';
+import RecommendationDog from './PetRecommendation/RecommendationDog';
 import RecommendationSearch from './PetRecommendation/RecommendationSearch';
 import AbandonedHome from "./abandoned/abandonedHome";
 import BlogSearch from "./search/blogSearch";
@@ -34,7 +34,7 @@ export default function Router() {
         { path: 'app', element: <DashboardAppPage /> },
         { path: 'user', element: <UserPage />,
           children: [
-            { path: 'PetRecommendation/RecommendationRandom', element: <RecommendationRandom /> },
+			{ path: 'PetRecommendation/RecommendationDog', element: <RecommendationDog /> },
             { path: 'PetRecommendation/RecommendationSearch', element: <RecommendationSearch /> }
 
           ] },
