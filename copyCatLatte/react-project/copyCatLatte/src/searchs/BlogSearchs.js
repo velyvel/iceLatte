@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React, { useEffect, useState } from "react";
-import { blogSearch } from '../search/blogsearch';
+import { blogSearch } from '../search/blogSearch';
 
 import Item from '../search/blogSearchItem';
 
