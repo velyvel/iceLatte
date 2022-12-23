@@ -1,4 +1,6 @@
 
+
+
 import {Carousel} from 'nuka-carousel/lib/carousel';
 
 import BreedCharacter from './BreedCharacter';
@@ -7,10 +9,11 @@ import BreedCharacter from './BreedCharacter';
 
 
 
-const BreedInfo=({selectedBreedInfo,breedImg})=>{
+const BreedInfo=({selectedBreedInfo})=>{
+
     /* eslint-disable camelcase */
-    console.log(breedImg);
-    const {id,name,description,life_span,temperament,adaptability,affection_level,child_friendly,dog_friendly,energy_level,health_issues,intelligence,shedding_level,social_needs,stranger_friendly,vocalisation}=selectedBreedInfo;
+   // console.log(breedImg);
+    const {id,name,life_span,adaptability,affection_level,child_friendly,dog_friendly,energy_level,health_issues,intelligence,shedding_level,social_needs,stranger_friendly,vocalisation}=selectedBreedInfo.breed;
     // test code console.log(JSON.stringify(selectedBreedInfo));    // const {url}=breedsImg;life_span,country_codes,
     // 주석 시 띄어써야함
     // temperament : 특성
@@ -25,6 +28,7 @@ const BreedInfo=({selectedBreedInfo,breedImg})=>{
     // intelligence : 지능
     // shedding_level : 털빠짐
     // vocalisation : 발성 크기
+    const {description,temperament}=selectedBreedInfo.papago;
 
     const imgStyle = {
         display:"inline-block",
@@ -45,16 +49,16 @@ const BreedInfo=({selectedBreedInfo,breedImg})=>{
         padding:"10px",
         margin:"0 auto"
     }
-    
+
     return (
         <div >       
             <div id='imgSlider' style={textDivStyle}>
             <Carousel cellAlign='center' wrapAround='true' style={imgSliderStyle}>
             {
-                 breedImg ?
-                 breedImg.map((breedImgs) => {
+                selectedBreedInfo.breedImg?
+                selectedBreedInfo.breedImg.map((breedImg) => {
                    return (
-                     <img  src={breedImgs.url} alt={breedImgs.id}  style={imgStyle} key={breedImgs.id}/>
+                     <img  src={breedImg.url} alt={breedImg.id}  style={imgStyle} key={breedImg.id}/>
                      )
                  })
                  : "이미지가 없습니다"
