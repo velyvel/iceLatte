@@ -53,10 +53,10 @@ export default function DashboardAppPage() {
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
             <Carousel cellAlign='center' wrapAround='true' >
-              <img src={`/copyCatLatte/assets/main_page/59inBag.jpeg`} alt="back-ground"/>
-              <img src={`/copyCatLatte/assets/main_page/haeilSeeWindow.jpeg`} alt="back-ground"/>
-              <img src={`/copyCatLatte/assets/main_page/tigerInBed.jpeg`} alt="back-ground"/>
-              <img src={`/copyCatLatte/assets/main_page/59street.jpeg`} alt="back-ground"/>
+              <img src={`/assets/main_page/59inBag.jpeg`} alt="back-ground"/>
+              <img src={`/assets/main_page/haeilSeeWindow.jpeg`} alt="back-ground"/>
+              <img src={`/assets/main_page/tigerInBed.jpeg`} alt="back-ground"/>
+              <img src={`/assets/main_page/59street.jpeg`} alt="back-ground"/>
 
             </Carousel>
 
