@@ -12,14 +12,19 @@ export default function DashboardAppPage() {
   
   const textDiv = {
     paddingLeft: 200,
-
-     top: '50%'
-    
-  }
+    margin: "auto",
+     top: '50%',
+     height:"500px"  ,  
+     position : "relative" 
+     }
 
   const mainDiv = {
     
     height:"3000px"    
+  }
+  const BreedInfo = {
+    
+    height:"600px"    
   }
 
   return (
@@ -77,14 +82,14 @@ export default function DashboardAppPage() {
 
           </Grid>
           <Grid item xs={12} sm={6} md={6}>
-             <Container>
+             <div style={BreedInfo}>
                
                 <div style={{padding: 20}}>
                   <button type={"button"} className="btn btn-primary"><Link to="PetRecommendation/RecommendationDog" style={{textDecoration:'none', color:'white'}}>강아지 종 조회</Link></button>&nbsp;&nbsp;
                   <button type={"button"} className="btn btn-primary"><Link to="PetRecommendation/RecommendationSearch" style={{textDecoration:'none', color:'white'}}>고양이 종 조회</Link></button>&nbsp;&nbsp;
                 </div>
             <Outlet />
-            </Container>
+            </div>
 
             
           </Grid>
