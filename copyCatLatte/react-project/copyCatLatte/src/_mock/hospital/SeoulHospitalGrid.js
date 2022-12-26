@@ -11,14 +11,13 @@ const SeoulHospitalGrid = ({ isLoading, data }) => {
             ):(
                 <div>
                     <br />
-                    <table className="table table-hover">
+                    <table className="table">
                     <thead>
                         <th> </th>
                         <th>이름</th>
                         <th>전화번호</th>
                         <th>지번주소</th>
                         <th>도로명주소</th>
-                        <th>길찾기</th>
                     </thead>
                     <tbody>
                         { data ? 
@@ -29,7 +28,6 @@ const SeoulHospitalGrid = ({ isLoading, data }) => {
                                     <td>{d.sitetel}</td>
                                     <td>{d.sitewhladdr}</td>
                                     <td>{d.rdnwhladdr}</td>
-                                    <td><button><a href='https://map.kakao.com'>링크</a></button></td>
                                 </tr>
                             ))
                             :
