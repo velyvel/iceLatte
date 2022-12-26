@@ -22,7 +22,8 @@
           content="The starting point for your next project with Minimal UI Kit, built on the newest version of Material-UI �, ready to be customized to your style"/>
     <meta name="keywords" content="react,material,kit,application,dashboard,admin,template"/>
     <meta name="author" content="Minimal UI Kit"/>
-    <script defer="defer" src="/copyCatLatte/static/js/main.5c686bab.js"></script>
+    <script defer="defer" src="/copyCatLatte/static/js/main.f14f4582.js"></script>
+   
     <link href="/copyCatLatte/static/css/main.8d6a17ca.css" rel="stylesheet">
 </head>
 <body>
