@@ -9,8 +9,16 @@ const RecommendationDog=()=>{
     const [selectedBreedInfoDog, setSelectedBreedInfoDog] = useState(null);
     const [selectedV, setSelectedV] = useState(1);
     
-    
+    const divStyle = {
+      padding:"10px",
+      margin:"0 auto"
+    }
 
+    const selectedBreedStyle = {
+      height:"40px",  
+      margin:"0px auto"
+      
+    }
     const breedHandlerDog= async (e)=>{    
       // 종 검색 
       let selectedBreed = null;    
@@ -56,6 +64,7 @@ const RecommendationDog=()=>{
     }
 
 
+
    
 
     // ㄱ가ㅇ아지  정보 로딩
@@ -67,24 +76,33 @@ const RecommendationDog=()=>{
               })
     },[]);
     return (
-        <div >
-          <select id='selectedBreed' onChange={ changeValue } value={ selectedV }>
-          {
+        <div>
+          <div className='form-control'>
+            <center>
+              <div style={divStyle} >
+                <select id='selectedBreed' onChange={ changeValue } value={ selectedV } style={selectedBreedStyle} >
+                  {
 
-            breedsDog ?
-              breedsDog.map((breed, idx) => {
-                return (
-                  <BreedItemOption key={breed.id} breed={breed} />
-                )
-              })
-              : "빈 데이터"
-          }
-        </select>
-        <button onClick={breedHandlerDog} >종 가져오기</button>
-       
-        {
-          selectedBreedInfoDog?<BreedInfoDog selectedBreedInfoDog={selectedBreedInfoDog}  />:null
-        }
+                    breedsDog ?
+                      breedsDog.map((breed, idx) => {
+                        return (
+                          <BreedItemOption key={breed.id} breed={breed} />
+                        )
+                      })
+                      : "빈 데이터"
+                  }
+                </select>
+                &nbsp;&nbsp;
+                <button type={"button"} className="btn btn-primary"onClick={breedHandlerDog}>종 가져오기</button>
+
+              </div>
+            </center>
+              {
+                selectedBreedInfoDog?<BreedInfoDog selectedBreedInfoDog={selectedBreedInfoDog}  />:null
+              }
+        
+          </div>
+        
         </div>
     )
 }
