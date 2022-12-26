@@ -9,16 +9,14 @@ import {Container, Stack, Typography,Grid} from '@mui/material';
 // ----------------------------------------------------------------------
 
 export default function DashboardAppPage() {
-  const selectedBreedStyle = {
-    
-    padding:"100px"
-    
-  }
+  
   const textDiv = {
-    
-    position: 'absolute', top: '50%',
+    paddingLeft: 200,
+
+     top: '50%'
     
   }
+
   const mainDiv = {
     
     height:"3000px"    
@@ -64,8 +62,8 @@ export default function DashboardAppPage() {
 
           </Grid>
           
-          <Grid item xs={12} sm={12} md={12}>
-             <Container>
+          <Grid item xs={12} sm={6} md={6}>
+             <div style={textDiv}>
                 <Typography variant="h2" gutterBottom>
                   종의 특징을 알아보세요!
                 </Typography>
@@ -73,12 +71,22 @@ export default function DashboardAppPage() {
                     <br/>
                     종마다의 다른 걸 원하고 성격이 다릅니다. 자신에게 맞는 종을 확인해보세요.
                 </p>
+                
+            </div>
+
+
+          </Grid>
+          <Grid item xs={12} sm={6} md={6}>
+             <Container>
+               
                 <div style={{padding: 20}}>
                   <button type={"button"} className="btn btn-primary"><Link to="PetRecommendation/RecommendationDog" style={{textDecoration:'none', color:'white'}}>강아지 종 조회</Link></button>&nbsp;&nbsp;
                   <button type={"button"} className="btn btn-primary"><Link to="PetRecommendation/RecommendationSearch" style={{textDecoration:'none', color:'white'}}>고양이 종 조회</Link></button>&nbsp;&nbsp;
                 </div>
             <Outlet />
             </Container>
+
+            
           </Grid>
       </Grid>
      
