@@ -7,29 +7,29 @@ const icon = (name) => <SvgColor src={`/assets/icons/navbar/${name}.svg`} sx={{ 
 
 const navConfig = [
   {
-    title: 'dashboard',
+    title: '홈',
     path: '/',
-    icon: icon('ic_analytics'),
+    icon: icon('pet-house'),
   },
-  {
-    title: '제목미정(동물 추천)',
-    path: '/dashboard/user',
-    icon: icon('ic_user'),
-  },
-  {
-    title: '동물병원 찾기',
-    path: '/dashboard/hospital',
-    icon: icon('ic_analytics'),
-  },
+  // {
+  //   title: '제목미정(동물 추천)',
+  //   path: '/dashboard/user',
+  //   icon: icon('hospital'),
+  // },
   {
     title: '모든 검색',
     path: '/dashboard/searchAll',
-    icon: icon('ic_cart'),
+    icon: icon('search'),
   },
   {
     title: '유기동물 조회, 구조',
     path: '/dashboard/recommendation/abandoned/abandonedHome',
     icon: icon('shelter'),
+  },
+  {
+    title: '동물병원 찾기',
+    path: '/dashboard/hospital',
+    icon: icon('hospital'),
   },
   {
     title: '공원 조회',
