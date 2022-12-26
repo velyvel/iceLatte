@@ -45,7 +45,7 @@ const BreedInfo=({selectedBreedInfo})=>{
     }
     
     const textDivStyle = {
-        width:"800px",
+        // width:"800px",
         padding:"10px",
         margin:"0 auto"
     }
@@ -68,9 +68,10 @@ const BreedInfo=({selectedBreedInfo})=>{
             <div style={textDivStyle}>
                 <p>id : {id}</p>
                 <p>이름 : {name}</p>
-                <p>특징 : {temperament}</p>
-                <p>설명 : {description}</p>
                 <p>수명 : {life_span}</p>
+                <p>특징 : {temperament}</p>
+                <p>설명 : </p>{description}
+                
                 <BreedCharacter BreedCharacter={adaptability} BreedCharacterName= "적응성" />
                 <BreedCharacter BreedCharacter={affection_level} BreedCharacterName= "애정도" />
                 <BreedCharacter BreedCharacter={child_friendly} BreedCharacterName= "유아 친화도" />

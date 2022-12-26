@@ -23,7 +23,6 @@ export default function ParkInfo() {
   let selectedLocation = null;
 
   const [weather, setWeather] = useState(null);
-  const [today, setToday] = useState(null);
 
     useEffect(() => {
       const loadData = async () => {
@@ -139,7 +138,7 @@ export default function ParkInfo() {
             <ParkWeatherSet weather={weather} />
             :
             <div>지역을 선택하세요</div>
-          }              
+          }
             </Container>
             
             <br />
