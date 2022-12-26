@@ -128,112 +128,112 @@ const abandonedInquire=() =>{
 
 
 
-            //===============================MapContainer================================================================
+    //===============================MapContainer================================================================
 
-            return (
-                <>
-                    <Container className="align-content-lg-center">
-                        <div className="row">
-                            <div className="col-sm-12">
-                                <h2 className="mt-4 mb-4 fw-bold"> 보호소 조회하기</h2>
+    return (
+        <>
+            <Container className="align-content-lg-center">
+                <div className="row">
+                    <div className="col-sm-12">
+                        <h2 className="mt-4 mb-4 fw-bold"> 보호소 조회하기</h2>
 
-                                <div className="row mb-3">
+                        <div className="row mb-3">
 
-                                    <div className="form-group col-md-4">
-                                        {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                                        <label className="mb-2">시, 도 조회</label>
-                                        <select className="form-select form-select-sm mb-1"
-                                                aria-label=".form-select-lg example"
-                                                defaultValue="시, 도 조회" onChange={handleSido}>
-                                            {
-                                                sidoList ? sidoList.map((item, idx) => (
-                                                            <option value={item.orgCd}
-                                                                    key={item.orgCd}>{item.orgdownNm}</option>
-                                                        )
-                                                    )
-                                                    : <option>데이터없당🙅‍♂️</option>
-                                            }
-
-                                        </select>
-                                    </div>
-
-                                    <div className="form-group col-md-4">
-                                        {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                                        <label className="mb-2">시, 군, 구 조회</label>
-                                        <select className="form-select form-select-sm mb-1"
-                                                aria-label=".form-select-lg example"
-                                                defaultValue="시, 군, 구 조회" onChange={handleSigungu}>
-                                            {
-                                                sigunguList ? sigunguList.map((item, idx) => (
-                                                            <option value={item.orgCd}
-                                                                    key={item.orgCd}>{item.orgdownNm}</option>
-                                                        )
-                                                    )
-                                                    : <option>시군구 데이터없당🙅‍♂️</option>
-                                            }
-                                        </select>
-                                    </div>
-
-
-                                    <div className="form-group col-md-3">
-                                        <button type={"button"} className="btn btn-secondary"
-                                                onClick={searchHandler}>조회하기
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <table className="table table-hover">
-                                        <thead>
-                                        <tr>
-                                            <th/>
-                                            <th/>
-                                            <th/>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        {shelterList ?
-                                            shelterList.map(item => (
-                                                    <tr key={item.careNm}>
-                                                        <td>{item.careNm}</td>
-                                                        <td>{item.careRegNo}</td>
-                                                        <td>
-                                                            <button className="btn btn-outline-primary"
-                                                                    onClick={() => onChange2(item)}>상세보기
-                                                            </button>
-                                                        </td>
-                                                    </tr>
+                            <div className="form-group col-md-4">
+                                {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+                                <label className="mb-2">시, 도 조회</label>
+                                <select className="form-select form-select-sm mb-1"
+                                        aria-label=".form-select-lg example"
+                                        defaultValue="시, 도 조회" onChange={handleSido}>
+                                    {
+                                        sidoList ? sidoList.map((item, idx) => (
+                                                    <option value={item.orgCd}
+                                                            key={item.orgCd}>{item.orgdownNm}</option>
                                                 )
                                             )
-                                            :
-                                            <tr/>
-                                        }
+                                            : <option>데이터없당🙅‍♂️</option>
+                                    }
 
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <br/>
-
-                            <div id='myMap'
-                                 style={{
-                                     width: 500,
-                                     height: 500
-                                 }}/>
-                            <br/><br/>
-
-                            <div>
-                                <div>
-                                    {/*{selectedShelter?*/}
-                                    {/*    (response.data.response.body.items.item[0].careTel) : <div/>}*/}
-                                </div>
+                                </select>
                             </div>
 
-                            <Outlet/>
+                            <div className="form-group col-md-4">
+                                {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+                                <label className="mb-2">시, 군, 구 조회</label>
+                                <select className="form-select form-select-sm mb-1"
+                                        aria-label=".form-select-lg example"
+                                        defaultValue="시, 군, 구 조회" onChange={handleSigungu}>
+                                    {
+                                        sigunguList ? sigunguList.map((item, idx) => (
+                                                    <option value={item.orgCd}
+                                                            key={item.orgCd}>{item.orgdownNm}</option>
+                                                )
+                                            )
+                                            : <option>시군구 데이터없당🙅‍♂️</option>
+                                    }
+                                </select>
+                            </div>
+
+
+                            <div className="form-group col-md-3">
+                                <button type={"button"} className="btn btn-secondary"
+                                        onClick={searchHandler}>조회하기
+                                </button>
+                            </div>
                         </div>
-                    </Container>
-                </>
-            );
-        }
+
+                        <div>
+                            <table className="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th/>
+                                    <th/>
+                                    <th/>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {shelterList ?
+                                    shelterList.map(item => (
+                                            <tr key={item.careNm}>
+                                                <td>{item.careNm}</td>
+                                                <td>{item.careRegNo}</td>
+                                                <td>
+                                                    <button className="btn btn-outline-primary"
+                                                            onClick={() => onChange2(item)}>상세보기
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        )
+                                    )
+                                    :
+                                    <tr/>
+                                }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <br/>
+
+                    <div id='myMap'
+                         style={{
+                             width: 500,
+                             height: 500
+                         }}/>
+                    <br/><br/>
+
+                    <div>
+                        <div>
+                            {/*{selectedShelter?*/}
+                            {/*    (response.data.response.body.items.item[0].careTel) : <div/>}*/}
+                        </div>
+                    </div>
+
+                    <Outlet/>
+                </div>
+            </Container>
+        </>
+    );
+}
 
 export default React.memo(abandonedInquire);

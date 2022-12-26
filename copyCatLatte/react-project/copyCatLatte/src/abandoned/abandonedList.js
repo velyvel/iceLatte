@@ -77,11 +77,12 @@ const url= `https://apis.data.go.kr/1543061/abandonmentPublicSrvc/abandonmentPub
             <div>
 
                 <div className="row mb-6">
+                    <button type={"button"} className="btn btn" style={{backgroundColor: '#439A97', opacity: '70%', width:'30%', margin: '0 auto', marginBottom:'20px'}}
+                            onClick={clickHandler}>전체검색
+                    </button>
+                    <br/><br/>
                     <div className="input-group mb-3">
-                        <button type={"button"} className="btn btn" style={{backgroundColor: '#439A97', opacity: '70%'}}
-                                onClick={clickHandler}>전체검색
-                        </button>
-                        <input className="form-control-sm" type="text" placeholder="검색어를 입력해주세요" onChange={event => {setSearchTerm(event.target.value)}} />
+                        <input className="form-control-sm" type="text" placeholder="검색어를 입력해주세요" onChange={event => {setSearchTerm(event.target.value)}} style={{margin:'0 auto', marginBottom:'20px'}}/>
                         <br/><br/>
                         <table style={{alignItems:"center"}} className="table table-hover">
                             <thead style={{display:"none"}}>
