@@ -80,15 +80,30 @@ const SeoulHospital = () => {
 
     return (
         <>
-        <select // 구
-            name="selectGu" onChange={onGuChange} ref={guSelect}>
-            {
-                guList ? guList.map((gu) => (
-                    <option value={gu} key={gu}>{gu}</option>
-                )) : <option>data not available</option>
-            }
-        </select>
-        <select // 동
+
+
+
+
+
+    <div className="row mb-3">
+        <div className="form-group col-md-4">
+            <label className="mb-2">구 조회</label>
+            <select className="form-select form-select-sm mb-1"
+                    aria-label=".form-select-lg example"
+                    // 구
+                name="selectGu" onChange={onGuChange} ref={guSelect}>
+                {
+                    guList ? guList.map((gu) => (
+                        <option value={gu} key={gu}>{gu}</option>
+                    )) : <option>data not available</option>
+                }
+            </select>
+        </div>
+
+        <div className="form-group col-md-4">
+            <label className="mb-2">동 조회</label>
+        <select className="form-select form-select-sm mb-1"
+                aria-label=".form-select-lg example"// 동
             name="selectDong" ref={dongSelect}>
             {
                 dongList ? dongList.map((dong) => (
@@ -96,7 +111,10 @@ const SeoulHospital = () => {
                 )) : <option>data not available</option>
             }
         </select>
-        <button onClick={
+        </div>
+
+        <div className="form-group col-md-3">
+        <button type={"button"} className="btn btn-secondary"onClick={
             (e) => {
                 const gu = guSelect.current.value;
                 const dong = dongSelect.current.value;
@@ -104,6 +122,9 @@ const SeoulHospital = () => {
                 getHospital(gu, dong);
             }
         }>검색</button>
+        </div>
+    </div>
+
         <Map // 지도를 표시할 Container
             center={ center || { lat: 37.566345, lng: 126.977893 } }
             style={{ width: "100%", height: "450px"}}
