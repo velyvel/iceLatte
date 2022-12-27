@@ -34,10 +34,15 @@ export default function Router() {
       element: <DashboardLayout />,
       children: [
         { element: <Navigate to="/" />, index: true },
-        { path: 'app', element: <DashboardAppPage /> },
+        { path: 'app', element: <DashboardAppPage /> ,
+        children: [
+          { path: 'PetRecommendation/RecommendationDog', element: <RecommendationDog /> },
+          { path: 'PetRecommendation/RecommendationSearch', element: <RecommendationSearch /> }
+
+        ]},
         { path: 'user', element: <UserPage />,
           children: [
-			{ path: 'PetRecommendation/RecommendationDog', element: <RecommendationDog /> },
+			      { path: 'PetRecommendation/RecommendationDog', element: <RecommendationDog /> },
             { path: 'PetRecommendation/RecommendationSearch', element: <RecommendationSearch /> }
 
           ] },

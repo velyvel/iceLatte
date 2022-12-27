@@ -31,7 +31,7 @@ const BreedInfoDog=({selectedBreedInfoDog})=>{
     }
     
     const textDivStyle = {
-        width:"800px",
+        // width:"800px",
         padding:"10px",
         margin:"0 auto"
     }
@@ -55,9 +55,10 @@ const BreedInfoDog=({selectedBreedInfoDog})=>{
             <div style={textDivStyle}>
                 <p>id : {id}</p>
                 <p>이름 : {name}</p>
+                <p>수명 : {life_span}</p>
                 <p>특징 : {temperament}</p>
                 {/* <p>설명 : {bred_for}</p> */}
-                <p>수명 : {life_span}</p>
+               
                 {/* <BreedCharacter BreedCharacter={good_with_children} BreedCharacterName= "good_with_children" /> */}
 
             </div>

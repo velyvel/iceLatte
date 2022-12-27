@@ -64,7 +64,7 @@ export default function Nav({ openNav, onCloseNav }) {
 
             <Box sx={{ ml: 2 }}>
               <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
-                <p>여기에 간단한 아이콘과 프로젝트 설명 넣자요</p>
+                <p>반려동물에 대한 정보를 제공하는 웹페이지입니다</p>
               </Typography>
             </Box>
           </StyledAccount>
