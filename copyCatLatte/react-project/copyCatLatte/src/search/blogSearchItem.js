@@ -3,6 +3,7 @@ import React from "react";
 
 const blogSearchItem = props => {
   return (
+    <>
     <li>
       <dl>
         <dt>
@@ -16,6 +17,7 @@ const blogSearchItem = props => {
         </dd>
       </dl>
     </li>
+    </>
   );
 };
 
