@@ -81,8 +81,6 @@ const abandonedInquire=() =>{
         const sheDetailUrl =  `https://apis.data.go.kr/1543061/animalShelterSrvc/shelterInfo?serviceKey=${serviceKey}&care_reg_no=${careRegNo}&_type=${type}`;
         axios.get(sheDetailUrl)
             .then((response) => {
-                // TODO
-
                 try {
                     markers.current.forEach((marker) => {
                         marker.setMap(null);
@@ -96,13 +94,25 @@ const abandonedInquire=() =>{
                     }
 
                     setSelectedShelter(response.data.response.body.items.item[0]);
-
+                    console.log(response);
                     const markerPosition = new kakao.maps.LatLng(lat, lng);
                     const marker = new kakao.maps.Marker({
                         position:markerPosition
                     });
+                    const moveLatLon = new kakao.maps.LatLng(lat, lng);
+                    //TODO: 윈도우에 변수넣기
+                    const iwName = response.data.response.body.items.item[0].careNm;
+                    const iwAddr = response.data.response.body.items.item[0].careAddr;
+                    const iwContent = `<div style="border-radius: 30px; text-align: center;">${iwName}<br/>${iwAddr}</div>`,
+                          iwPosition = new kakao.maps.LatLng(lat,lng);
                     marker.setMap(map);
+                    map.setCenter(moveLatLon);
                     markers.current.push(marker);
+                    const infowindow = new kakao.maps.InfoWindow({
+                        position : iwPosition,
+                        content : iwContent
+                    });
+                    infowindow.open(map,marker);
 
                 } catch(e) {
                     alert('보호소 상세 정보가 없습니다.');
@@ -114,10 +124,11 @@ const abandonedInquire=() =>{
         const container = document.getElementById("myMap");
         const options = {
             center: new kakao.maps.LatLng(33.450701, 126.570667),
-            level: 10,
+            level: 2,
         };
         const map = new kakao.maps.Map(container, options);
         setMap(map);
+
     };
 
     const [map, setMap] = useState( null );
@@ -188,7 +199,6 @@ const abandonedInquire=() =>{
                                 <tr>
                                     <th/>
                                     <th/>
-                                    <th/>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -196,10 +206,9 @@ const abandonedInquire=() =>{
                                     shelterList.map(item => (
                                             <tr key={item.careNm}>
                                                 <td>{item.careNm}</td>
-                                                <td>{item.careRegNo}</td>
                                                 <td>
                                                     <button className="btn btn-outline-primary"
-                                                            onClick={() => onChange2(item)}>상세보기
+                                                            onClick={() => onChange2(item)}style={{alignItems:'flex-start'}}>상세보기
                                                     </button>
                                                 </td>
                                             </tr>
@@ -217,18 +226,14 @@ const abandonedInquire=() =>{
 
                     <div id='myMap'
                          style={{
-                             width: 500,
-                             height: 500
+                             width: 850,
+                             height: 480
                          }}/>
                     <br/><br/>
-
-                    <div>
+                    <br/><br/>
                         <div>
-                            {/*{selectedShelter?*/}
-                            {/*    (response.data.response.body.items.item[0].careTel) : <div/>}*/}
+                            <selectedShelterList/>
                         </div>
-                    </div>
-
                     <Outlet/>
                 </div>
             </Container>
