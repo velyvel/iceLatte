@@ -104,7 +104,7 @@ const AbandonedList = () => {
                     <TableContainer>
                         <Table aria-label="simple table">
                             <TableHead>
-                                <TableRow>
+                                <TableRow style={{display:'none'}}>
                                     <TableCell>번호</TableCell><TableCell>종류</TableCell><TableCell>보호소</TableCell><TableCell>사진</TableCell><TableCell>보호소
                                     위치</TableCell><TableCell>보호상태</TableCell><TableCell>중성화여부</TableCell>
                                 </TableRow>

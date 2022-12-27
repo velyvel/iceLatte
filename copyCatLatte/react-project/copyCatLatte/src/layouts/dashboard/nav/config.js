@@ -23,7 +23,7 @@ const navConfig = [
   },
   {
     title: '유기동물 조회, 구조',
-    path: '/dashboard/recommendation/abandoned/abandonedHome',
+    path: '/dashboard/recommendation/abandoned/abandonedChart',
     icon: icon('shelter'),
   },
   {

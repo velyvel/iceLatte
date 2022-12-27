@@ -16,7 +16,6 @@ import AbandonedChart from "./abandoned/abandonedChart";
 import ParkInfo from './pages/ParkInfo';
 import RecommendationDog from './PetRecommendation/RecommendationDog';
 import RecommendationSearch from './PetRecommendation/RecommendationSearch';
-import AbandonedHome from "./abandoned/abandonedHome";
 import WebSearchs from './searchs/WebSearchs';
 import VClipSearchs from './searchs/VClipSearchs';
 import ImageSearchs from './searchs/ImageSearchs';
@@ -42,11 +41,9 @@ export default function Router() {
         ]},
         { path: 'user', element: <UserPage />,
           children: [
-			      { path: 'PetRecommendation/RecommendationDog', element: <RecommendationDog /> },
-            { path: 'PetRecommendation/RecommendationSearch', element: <RecommendationSearch /> }
-
+            { path: 'PetRecommendation/RecommendationDog', element: <RecommendationDog /> },
+            { path: 'PetRecommendation/RecommendationSearch', element: <RecommendationSearch /> },
           ] },
-
 
         { path: 'searchAll',
           element: <SearchAllPage />,
@@ -64,7 +61,6 @@ export default function Router() {
         { path: 'recommendation',
           element: <RecommendationPage />,
           children: [
-            { path: 'abandoned/abandonedHome', element: <AbandonedHome /> },
             { path: 'abandoned/abandonedList', element: <AbandonedList /> },
             { path: 'abandoned/abandonedInquire', element: <AbandonedInquire /> },
             { path: 'abandoned/abandonedChart', element: <AbandonedChart /> },

@@ -2,12 +2,12 @@
 
 import * as React from 'react';
 
-import { Helmet } from 'react-helmet-async';
+import {Helmet} from 'react-helmet-async';
 import {Link, Outlet} from 'react-router-dom';
 import {Carousel} from 'nuka-carousel/lib/carousel';
 
 // @mui
-import {Container, Stack, Typography,Grid} from '@mui/material';
+import {Container, Stack, Typography, Grid} from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
@@ -19,8 +19,6 @@ import Card from '@mui/material/Card';
 import 'bootstrap/dist/css/bootstrap.css';
 
 
-
-
 // ----------------------------------------------------------------------
 
 export default function DashboardAppPage() {
@@ -29,17 +27,17 @@ export default function DashboardAppPage() {
         paddingLeft: 200,
         margin: "auto",
         top: '50%',
-        height:"500px"  ,
-        position : "relative"
+        height: "500px",
+        position: "relative"
     }
 
     const mainDiv = {
 
-        height:"3000px"
+        height: "3000px"
     }
     const BreedInfo = {
 
-        height:"600px"
+        height: "600px"
     }
 
 
@@ -51,7 +49,7 @@ export default function DashboardAppPage() {
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
 
 
-                <AppBar position="relative">
+                <AppBar position="relative" style={{backgroundColor: 'lightcoral'}}>
                     <Toolbar>
                         {/* <CameraIcon sx={{ mr: 2 }} /> */}
                         <Typography variant="h6" color="inherit" noWrap>
@@ -79,95 +77,42 @@ export default function DashboardAppPage() {
                     유기동물과 보호소 조회를 할 수 있습니다.
                 </Typography>
                 <Stack
-                    sx={{ pt: 4 }}
+                    sx={{pt: 4}}
                     direction="row"
                     spacing={2}
                     justifyContent="center"
                 >
-                    <Button variant="contained"><Link to="PetRecommendation/RecommendationDog" style={{textDecoration:'none', color:'white'}}>강아지 종 조회</Link></Button>&nbsp;&nbsp;
-                    <Button variant="outlined"><Link to="PetRecommendation/RecommendationSearch"style={{textDecoration:'none'}}>고양이 종 조회</Link></Button>&nbsp;&nbsp;
+                    <Button variant="contained" style={{backgroundColor: 'lightcoral'}}><Link
+                        to="PetRecommendation/RecommendationDog" style={{textDecoration: 'none', color: 'white'}}>강아지 종
+                        조회</Link></Button>&nbsp;&nbsp;
+                    <Button variant="outlined"><Link to="PetRecommendation/RecommendationSearch"
+                                                     style={{textDecoration: 'none', color: 'lightcoral'}}>고양이 종
+                        조회</Link></Button>&nbsp;&nbsp;
 
                 </Stack>
                 <br/><br/>
 
-                <Outlet />
+                <Outlet/>
             </Container>
 
             <br/><br/><br/>
-
-
-            <Grid item xs={12} md={6} style={{alignItems:'center'}}>
-                <CardActionArea component="a" href="#">
-                    <Card sx={{ display: 'flex' }} style={{width:'600px', height:'200px', display:'inline-block'}}>
-                        <CardContent sx={{ flex: 1 }}>
-                            <Typography component="h2" variant="h5">
-                                title
-                            </Typography>
-                            <Typography variant="subtitle1" color="text.secondary">
-                               date
-                            </Typography>
-                            <Typography variant="subtitle1" paragraph>
-                                ddddddd
-                            </Typography>
-                            <Typography variant="subtitle1" color="primary">
-                                Continue reading...
-                            </Typography>
-                        </CardContent>
-                        <CardMedia
-                            component="img"
-                            sx={{ width: 160, display: { xs: 'inline-block', sm: 'inline-block' } }}
-                            img src="/assets/main_page/haeilSeeWindow.jpeg"
-                            alt="dddd"
-                        />
-                    </Card>
-                        <Card sx={{ display: 'flex' }} style={{width:'600px', height:'200px', display:'inline-block', marginLeft:'50px'}}>
-                            <CardContent sx={{ flex: 1 }}>
-                                <Typography component="h2" variant="h5">
-                                    title
-                                </Typography>
-                                <Typography variant="subtitle1" color="text.secondary">
-                                    date
-                                </Typography>
-                                <Typography variant="subtitle1" paragraph>
-                                    ddddddd
-                                </Typography>
-                                <Typography variant="subtitle1" color="primary">
-                                    Continue reading...
-                                </Typography>
-                            </CardContent>
-                            <CardMedia
-                                style={{display:'inline-block'}}
-                                component="img"
-                                sx={{ width: 160, display: { xs: 'inline-block', sm: 'inline-block' } }}
-                                img src="/assets/main_page/haeilSeeWindow.jpeg"
-                                alt="dddd"
-                            />
-                        </Card>
-                </CardActionArea>
-
-            </Grid>
-            
-
-
-            <br/> <br/> <br/> <br/>
-
-
-                {/*<Grid item xs={12} sm={6} md={6}>*/}
-                {/*    <div style={BreedInfo}>*/}
-
-                {/*        <div style={{padding: 20}}>*/}
-                {/*            <button type={"button"} className="btn btn-primary"><Link to="PetRecommendation/RecommendationDog" style={{textDecoration:'none', color:'white'}}>강아지 종 조회</Link></button>&nbsp;&nbsp;*/}
-                {/*            <button type={"button"} className="btn btn-primary"><Link to="PetRecommendation/RecommendationSearch" style={{textDecoration:'none', color:'white'}}>고양이 종 조회</Link></button>&nbsp;&nbsp;*/}
-                {/*        </div>*/}
-
-                {/*    </div>*/}
-
-
-                {/*</Grid>*/}
-
-
-
-
+            <div>
+                <div id="carouselExampleCaptions" className="carousel slide" data-bs-ride="false">
+                    <div className="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0"
+                                className="active" aria-current="true" aria-label="Slide 1"></button>
+                    </div>
+                    <div className="carousel-inner">
+                        <div className="carousel-item active">
+                            <img src="/assets/main_page/59inBag.jpeg" className="d-block w-100" alt="..." style={{height:'500px'}}/>
+                            <div className="carousel-caption d-none d-md-block">
+                                <h3> 반려동물 관련  페이지</h3>
+                                <p>api 활용하여 만들었습니다</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    );
-}
+            );
+            }

@@ -171,6 +171,8 @@ const options = {
 const abandonedChart = () => {
     return (
         <Container>
+               <h5>보호소 현황 차트입니다</h5>
+
             <Line type="line" data={data} options={options} />
         </Container>
     );
