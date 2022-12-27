@@ -1,6 +1,5 @@
 /* eslint-disable */
 const ParkWeatherSet = ({weather}) => {
-console.log({weather})
 
     return(
         <>

@@ -26,9 +26,9 @@ const SeoulHospital = () => {
 
     const getHospital = async (gu, dong) => {
         // setIsLoading(true);
-        const url = `http://localhost:8080/hospitals/find-hospitals-by-area?gu=${gu}&dong=${dong}`;
+        const url = `http://localhost:8080/hospitals/find-hospitals-by-area`;
 
-        const response = await axios.get(url);
+        const response = await axios.post(url, { "gu" : gu, "dong" : dong}, { headers: { "Content-Type": "application/x-www-form-urlencoded" }} );
              
         const data = response.data;        
 
@@ -40,7 +40,7 @@ const SeoulHospital = () => {
                 const tmtowgs = proj4(tm2097, wgs84, [parseFloat(hospital.x) ,parseFloat(hospital.y)]);
                 hospital.x = tmtowgs[0];
                 hospital.y = tmtowgs[1];
-            }
+             }
             return hospital;
         });
 
@@ -71,8 +71,8 @@ const SeoulHospital = () => {
     };
 
     const chooseDong = (gu) => {
-        const url = `http://localhost:8080/hospitals/choose-dong?gu=${gu}`;
-        axios.get(url)
+        const url = `/hospitals/choose-dong`;
+        axios.post(url, {"gu": gu}, { headers: { "Content-Type": "application/x-www-form-urlencoded" }})
              .then((response) => {
                 setDongList(response.data);
              });

@@ -59,7 +59,11 @@
         
         
         <property name="java-output-path" value="/copyCatLatte/target/classes"/>
+<<<<<<< HEAD
         <property name="context-root" value="/"/>
+=======
+        <property name="context-root" value="copyCatLatte"/>
+>>>>>>> 7df4b8914b59714c8eb2cd35897ea62154219f02
                                                                             
     
     
