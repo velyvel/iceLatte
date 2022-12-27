@@ -1,7 +1,8 @@
-import { Helmet } from 'react-helmet-async';
+/*eslint-disable*/
+
 
 import {Link, Outlet} from 'react-router-dom';
-
+import { Helmet } from 'react-helmet-async';
 // @mui
 import {
   
@@ -12,14 +13,7 @@ import {
   
   
 } from '@mui/material';
-// components
-import Label from '../components/label';
-import Iconify from '../components/iconify';
-import Scrollbar from '../components/scrollbar';
-// sections
-import { UserListHead, UserListToolbar } from '../sections/@dashboard/user';
-// mock
-import USERLIST from '../_mock/user';
+
 
 
 
@@ -35,12 +29,13 @@ export default function UserPage() {
           <Typography variant="h4" gutterBottom>
             동물 추천
           </Typography>
-         
         </Stack>
         
         <div style={{padding: 20}}>
-            [<Link to="PetRecommendation/RecommendationDog">강아지 종 조회</Link>]
-            [<Link to="PetRecommendation/RecommendationSearch">고양이 종 조회</Link>]
+        <button type={"button"} className="btn btn-primary"><Link to="PetRecommendation/RecommendationDog" style={{textDecoration:'none', color:'white'}}>강아지 종 조회</Link></button>&nbsp;&nbsp;
+        <button type={"button"} className="btn btn-primary"><Link to="PetRecommendation/RecommendationSearch" style={{textDecoration:'none', color:'white'}}>고양이 종 조회</Link></button>&nbsp;&nbsp;
+
+          
             <hr/>
         </div>
 

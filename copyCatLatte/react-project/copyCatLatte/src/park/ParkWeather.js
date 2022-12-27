@@ -9,7 +9,7 @@ function ParkWeather ({setWeather, selectedLocation}) {
     let year = newDate.getFullYear();
     let today = month < 10 ? `${year}0${month}${date}` : `${year}${month}${date}`;
     let time = newDate.getMinutes() < 59 ? (newDate.getHours()-1)+"00" : newDate.getHours()+"00";
-    let timeData = newDate.getHours()<10 ? "0"+time : time; 
+    let timeData = time<1000 ? "0"+time : time; 
 
     // 날씨 조회할 좌표
     const [lat, lng] = {selectedLocation} ? selectedLocation.split(',') : [55,127];

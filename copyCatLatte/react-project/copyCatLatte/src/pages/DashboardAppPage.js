@@ -1,219 +1,152 @@
 import { Helmet } from 'react-helmet-async';
-import { faker } from '@faker-js/faker';
+import {Link, Outlet} from 'react-router-dom';
+import {Carousel} from 'nuka-carousel/lib/carousel';
+
 // @mui
-import { useTheme } from '@mui/material/styles';
-import { Grid, Container, Typography } from '@mui/material';
-// components
-import Iconify from '../components/iconify';
-// sections
-import {
-  AppTasks,
-  AppNewsUpdate,
-  AppOrderTimeline,
-  AppCurrentVisits,
-  AppWebsiteVisits,
-  AppTrafficBySite,
-  AppWidgetSummary,
-  AppCurrentSubject,
-  AppConversionRates,
-} from '../sections/@dashboard/app';
+import {Container, Stack, Typography,Grid} from '@mui/material';
+import styled from 'styled-components';
 
 // ----------------------------------------------------------------------
 
 export default function DashboardAppPage() {
-  const theme = useTheme();
 
-  return (
-    <>
-      <Helmet>
-        <title> CopyCatLatte </title>
-      </Helmet>
+    const textDiv = {
+        paddingLeft: 200,
+        margin: "auto",
+        top: '50%',
+        height:"500px"  ,
+        position : "relative"
+    }
 
-      <Container maxWidth="xl">
-        <Typography variant="h4" sx={{ mb: 5 }}>
-          Hi, Welcome back
-        </Typography>
+    const mainDiv = {
 
-        <Grid container spacing={3}>
-          <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Weekly Sales" total={714000} icon={'ant-design:android-filled'} />
-          </Grid>
+        height:"3000px"
+    }
+    const BreedInfo = {
 
-          <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="New Users" total={1352831} color="info" icon={'ant-design:apple-filled'} />
-          </Grid>
+        height:"600px"
+    }
 
-          <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Item Orders" total={1723315} color="warning" icon={'ant-design:windows-filled'} />
-          </Grid>
+    const mainBlock = styled.div`
+     p{
+     color : red
+     }
+    `;
 
-          <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Bug Reports" total={234} color="error" icon={'ant-design:bug-filled'} />
-          </Grid>
+    return (
+        <div style={mainDiv}>
+            <Helmet>
+                <title> CopyCat </title>
+            </Helmet>
+            <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
 
-          <Grid item xs={12} md={6} lg={8}>
-            <AppWebsiteVisits
-              title="Website Visits"
-              subheader="(+43%) than last year"
-              chartLabels={[
-                '01/01/2003',
-                '02/01/2003',
-                '03/01/2003',
-                '04/01/2003',
-                '05/01/2003',
-                '06/01/2003',
-                '07/01/2003',
-                '08/01/2003',
-                '09/01/2003',
-                '10/01/2003',
-                '11/01/2003',
-              ]}
-              chartData={[
-                {
-                  name: 'Team A',
-                  type: 'column',
-                  fill: 'solid',
-                  data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30],
-                },
-                {
-                  name: 'Team B',
-                  type: 'area',
-                  fill: 'gradient',
-                  data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43],
-                },
-                {
-                  name: 'Team C',
-                  type: 'line',
-                  fill: 'solid',
-                  data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
-                },
-              ]}
-            />
-          </Grid>
+                <Typography variant="h1" gutterBottom>
+                    CopyCat 메인페이지입니다
+                </Typography>
+            </Stack>
+            
+            <mainBlock>{
+                <div className="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
+                    <div className="container">
+                        <div className="col-lg-12">
+                            <div className="row">
+                                <div className="col-lg-6 align-self-center">
+                                    <div className="left-content header-text wow fadeInLeft" data-wow-duration="1s"
+                                         data-wow-delay="1s">
+                                        <h5>환영합니다🐶</h5>
+                                        <h2>We Make <em>Digital Ideas</em> &amp; <span>SEO</span> Marketing</h2>
+                                        <p>Space Dynamic is a professional looking HTML template using a Bootstrap 5
+                                            (beta 2). This CSS template is free for you provided by <a rel="nofollow"
+                                                                                                       href="https://templatemo.com/page/1"
+                                                                                                       target="_parent">TemplateMo</a>.
+                                        </p>
+                                        <form id="search" action="#" method="GET">
+                                            <fieldset>
+                                                <input type="address" name="address" className="email"
+                                                       placeholder="Your website URL..." autoComplete="on" required/>
+                                            </fieldset>
+                                            <fieldset>
+                                                <button type="submit" className="main-button">Analyze Site</button>
+                                            </fieldset>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div className="col-lg-6">
+                                    <div className="right-image wow fadeInRight" data-wow-duration="1s"
+                                         data-wow-delay="0.5s">
+                                        <img src="/assets/main_page/banner-right-image.png" alt="team meeting"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            </mainBlock>
 
-          <Grid item xs={12} md={6} lg={4}>
-            <AppCurrentVisits
-              title="Current Visits"
-              chartData={[
-                { label: 'America', value: 4344 },
-                { label: 'Asia', value: 5435 },
-                { label: 'Europe', value: 1443 },
-                { label: 'Africa', value: 4443 },
-              ]}
-              chartColors={[
-                theme.palette.primary.main,
-                theme.palette.info.main,
-                theme.palette.warning.main,
-                theme.palette.error.main,
-              ]}
-            />
-          </Grid>
+            <br/> <br/> <br/> <br/>
 
-          <Grid item xs={12} md={6} lg={8}>
-            <AppConversionRates
-              title="Conversion Rates"
-              subheader="(+43%) than last year"
-              chartData={[
-                { label: 'Italy', value: 400 },
-                { label: 'Japan', value: 430 },
-                { label: 'China', value: 448 },
-                { label: 'Canada', value: 470 },
-                { label: 'France', value: 540 },
-                { label: 'Germany', value: 580 },
-                { label: 'South Korea', value: 690 },
-                { label: 'Netherlands', value: 1100 },
-                { label: 'United States', value: 1200 },
-                { label: 'United Kingdom', value: 1380 },
-              ]}
-            />
-          </Grid>
 
-          <Grid item xs={12} md={6} lg={4}>
-            <AppCurrentSubject
-              title="Current Subject"
-              chartLabels={['English', 'History', 'Physics', 'Geography', 'Chinese', 'Math']}
-              chartData={[
-                { name: 'Series 1', data: [80, 50, 30, 40, 100, 20] },
-                { name: 'Series 2', data: [20, 30, 40, 80, 20, 80] },
-                { name: 'Series 3', data: [44, 76, 78, 13, 43, 10] },
-              ]}
-              chartColors={[...Array(6)].map(() => theme.palette.text.secondary)}
-            />
-          </Grid>
+            <Grid container spacing={12}>
 
-          <Grid item xs={12} md={6} lg={8}>
-            <AppNewsUpdate
-              title="News Update"
-              list={[...Array(5)].map((_, index) => ({
-                id: faker.datatype.uuid(),
-                title: faker.name.jobTitle(),
-                description: faker.name.jobTitle(),
-                image: `/assets/images/covers/cover_${index + 1}.jpg`,
-                postedAt: faker.date.recent(),
-              }))}
-            />
-          </Grid>
+                <Grid item xs={12} sm={6} md={6}>
 
-          <Grid item xs={12} md={6} lg={4}>
-            <AppOrderTimeline
-              title="Order Timeline"
-              list={[...Array(5)].map((_, index) => ({
-                id: faker.datatype.uuid(),
-                title: [
-                  '1983, orders, $4220',
-                  '12 Invoices have been paid',
-                  'Order #37745 from September',
-                  'New order placed #XF-2356',
-                  'New order placed #XF-2346',
-                ][index],
-                type: `order${index + 1}`,
-                time: faker.date.past(),
-              }))}
-            />
-          </Grid>
 
-          <Grid item xs={12} md={6} lg={4}>
-            <AppTrafficBySite
-              title="Traffic by Site"
-              list={[
-                {
-                  name: 'FaceBook',
-                  value: 323234,
-                  icon: <Iconify icon={'eva:facebook-fill'} color="#1877F2" width={32} />,
-                },
-                {
-                  name: 'Google',
-                  value: 341212,
-                  icon: <Iconify icon={'eva:google-fill'} color="#DF3E30" width={32} />,
-                },
-                {
-                  name: 'Linkedin',
-                  value: 411213,
-                  icon: <Iconify icon={'eva:linkedin-fill'} color="#006097" width={32} />,
-                },
-                {
-                  name: 'Twitter',
-                  value: 443232,
-                  icon: <Iconify icon={'eva:twitter-fill'} color="#1C9CEA" width={32} />,
-                },
-              ]}
-            />
-          </Grid>
+                    <div style={textDiv} >
+                        <Typography variant="h2" gutterBottom>
+                            동물과 행복 사랑을 담아주세요
+                        </Typography>
+                        <p>
+                            <br/>
+                            동물과 행복 사랑을 담아주세요. 사고뭉치의 의사소통이 서툰 아이들이지만 <br/>항상 당신을 사랑해줄 가족이 될겁니다.
+                        </p>
+                        <button type={"button"} className="btn btn-primary"><Link to="/dashboard/recommendation/abandoned/abandonedHome" style={{textDecoration:'none', color:'white'}}>유기동물 조회,구조</Link></button>&nbsp;&nbsp;
 
-          <Grid item xs={12} md={6} lg={8}>
-            <AppTasks
-              title="Tasks"
-              list={[
-                { id: '1', label: 'Create FireStone Logo' },
-                { id: '2', label: 'Add SCSS and JS files if required' },
-                { id: '3', label: 'Stakeholder Meeting' },
-                { id: '4', label: 'Scoping & Estimations' },
-                { id: '5', label: 'Sprint Showcase' },
-              ]}
-            />
-          </Grid>
-        </Grid>
-      </Container>
-    </>
-  );
+                    </div>
+
+                </Grid>
+                <Grid item xs={12} sm={6} md={4}>
+                    <Carousel cellAlign='center' wrapAround='true' >
+                        <img src={`/assets/main_page/59inBag.jpeg`} alt="back-ground"/>
+                        <img src={`/assets/main_page/haeilSeeWindow.jpeg`} alt="back-ground"/>
+                        <img src={`/assets/main_page/tigerInBed.jpeg`} alt="back-ground"/>
+                        <img src={`/assets/main_page/59street.jpeg`} alt="back-ground"/>
+
+                    </Carousel>
+
+                </Grid>
+
+                <Grid item xs={12} sm={6} md={6}>
+                    <div style={textDiv}>
+                        <Typography variant="h2" gutterBottom>
+                            종의 특징을 알아보세요!
+                        </Typography>
+                        <p>
+                            <br/>
+                            종마다의 다른 걸 원하고 성격이 다릅니다. 자신에게 맞는 종을 확인해보세요.
+                        </p>
+
+                    </div>
+
+
+                </Grid>
+                <Grid item xs={12} sm={6} md={6}>
+                    <div style={BreedInfo}>
+
+                        <div style={{padding: 20}}>
+                            <button type={"button"} className="btn btn-primary"><Link to="PetRecommendation/RecommendationDog" style={{textDecoration:'none', color:'white'}}>강아지 종 조회</Link></button>&nbsp;&nbsp;
+                            <button type={"button"} className="btn btn-primary"><Link to="PetRecommendation/RecommendationSearch" style={{textDecoration:'none', color:'white'}}>고양이 종 조회</Link></button>&nbsp;&nbsp;
+                        </div>
+                        <Outlet />
+                    </div>
+
+
+                </Grid>
+            </Grid>
+
+
+
+
+        </div>
+    );
 }

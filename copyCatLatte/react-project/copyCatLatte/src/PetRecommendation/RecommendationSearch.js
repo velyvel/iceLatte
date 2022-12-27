@@ -12,6 +12,17 @@ const RecommendationSearch=()=>{
     const [selectedV, setSelectedV] = useState("abys");
     //const [breedImg, setBreedImg] = useState([]);
     //const [papago, setPapago] = useState([]);
+    const divStyle = {
+      padding:"10px",
+      margin:"0 auto"
+    }
+
+    const selectedBreedStyle = {
+      height:"40px",  
+      margin:"0px auto"
+      
+    }
+
 
     const breedHandler =  async (e) => {
       
@@ -62,22 +73,30 @@ const RecommendationSearch=()=>{
     },[]);
     return (
         <div >
-          <select id='selectedBreed' onChange={ changeValue } value={ selectedV }>
-          {
+          <div className='form-control'>
+            <center>
+              <div style={divStyle} >
+                <select id='selectedBreed' onChange={ changeValue } value={ selectedV } style={selectedBreedStyle}  >
+                {
 
-            breeds ?
-              breeds.map((breed, idx) => {
-                return (
-                  <BreedItemOption key={breed.id} breed={breed} />
-                )
-              })
-              : "빈 데이터"
-          }
-        </select>
-        <button onClick={breedHandler} >종 가져오기</button>
-        {
-          selectedBreedInfo?<BreedInfo selectedBreedInfo={selectedBreedInfo}  />:null
-        }
+                  breeds ?
+                    breeds.map((breed, idx) => {
+                      return (
+                        <BreedItemOption key={breed.id} breed={breed} />
+                      )
+                    })
+                    : "빈 데이터"
+                }
+              </select>
+              &nbsp;&nbsp;
+              <button type={"button"} className="btn btn-primary"onClick={breedHandler}>종 가져오기</button>
+
+            </div>
+          </center>
+            {
+              selectedBreedInfo?<BreedInfo selectedBreedInfo={selectedBreedInfo}  />:null
+            }
+        </div>
        
         </div>
     )

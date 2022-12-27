@@ -11,7 +11,8 @@ const ParkList = ({park}) => {
                   <table className="table align-middle">
                     <thead>
                     <tr>
-                        <th colSpan={2}>{park.P_PARK}</th>
+                        <td colSpan={2}>{park.P_PARK}</td>
+                        {/* <th colSpan={2}>{park.P_PARK}</th> */}
                     </tr>
                     </thead>
                     <tbody>
