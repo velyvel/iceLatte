@@ -61,7 +61,6 @@ function ParkWeather ({setWeather, selectedLocation}) {
         const key = "Is3hMy8hs4JH7uSeR30Jv%2BjGAoBqBcw1i4UPRSP%2F1Hr61gMRgrkjRpQmzSQwZuK%2FtID5S348JJTMRyVV3TyYmQ%3D%3D";
         const url = `https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst?serviceKey=${key}&pageNo=1&numOfRows=1000&dataType=json&base_date=${today}&base_time=${timeData}&nx=${rs1.x}&ny=${rs1.y}`;
         const response = await axios.get(url);
-        console.log(response)
         const dataCluster = JSON.stringify(response.data.response.body.items.item);
         const dataList = JSON.parse(dataCluster);
         {setWeather(dataList)}

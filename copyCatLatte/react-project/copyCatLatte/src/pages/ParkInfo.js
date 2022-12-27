@@ -18,7 +18,7 @@ export default function ParkInfo() {
   
   const [area, setArea] = useState(null);
   const [parks, setParks] = useState(null);
-  const [selectedPlace, setSelectedPlace] = useState([]);
+  const [selectedPlace, setSelectedPlace] = useState(null);
   let markedPlace = null;
   let selectedLocation = null;
 
@@ -67,8 +67,8 @@ export default function ParkInfo() {
             marker.id=park.P_IDX;
             
             const infowindow = new kakao.maps.InfoWindow({
-              content: park.P_PARK,
-              removable : true
+              content: park.P_PARK
+              // removable : true
             });
         
             // 마커 클릭하면 해당 장소 정보 저장
@@ -84,16 +84,18 @@ export default function ParkInfo() {
               makeOverListener(map, marker, infowindow)
             );
 
-            // 마우스 치우면 이름 표시 지우기(클릭한 애는 빼고)
+            // 마우스 치우면 이름 표시 지우기
             kakao.maps.event.addListener(
               marker,
-              "mouseout", () => {
-                if (markedPlace===null || markedPlace.id !== marker.id) {
-                  infowindow.close();
-              }else{
-                infowindow.open(map, marker);
-              }
-              }
+              "mouseout", 
+              // () => {
+              //   if (markedPlace===null || markedPlace.id !== marker.id) {
+              //     infowindow.close();
+              // }else{
+              //   infowindow.open(map, marker);
+              // }
+              // }
+              makeOutListener(infowindow)
             );
 
             // 마우스 올릴때 정보창 켜기
@@ -102,8 +104,17 @@ export default function ParkInfo() {
                 infowindow.open(map, marker);
               };
             }
+            // 마우스 내릴때 정보창 끄기
+            function makeOutListener(infowindow) {
+              return function () {
+                infowindow.close();
+              };
+            }
+
             }) 
-    };
+            };
+
+            
 
     // 지역 선택 select의 option 값 배열 만들기 
     const areaArray = area ? 
@@ -115,7 +126,6 @@ export default function ParkInfo() {
       clickData(parks);
       ParkWeather({setWeather, selectedLocation});
     };
-
     return (
         <>
             <Helmet>
@@ -150,7 +160,7 @@ export default function ParkInfo() {
                 <br/><br/>
             </Container>
             <Container>
-              {selectedPlace ? <ParkList park={selectedPlace} /> : <div></div>}
+              {selectedPlace ? <ParkList park={selectedPlace} /> : <div>공원을 선택하면 상세정보를 확인할 수 있습니다.</div>}
             </Container>
             <ParkDropDown setArea={setArea} />
         </>
