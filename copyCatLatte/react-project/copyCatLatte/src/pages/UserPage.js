@@ -29,7 +29,6 @@ export default function UserPage() {
           <Typography variant="h4" gutterBottom>
             동물 추천
           </Typography>
-         
         </Stack>
         
         <div style={{padding: 20}}>
