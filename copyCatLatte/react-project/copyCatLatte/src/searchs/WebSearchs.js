@@ -3,6 +3,65 @@ import React, { useEffect, useState } from "react";
 import { WebSearch } from '../search/WebSearch';
 
 import Item from '../search/WebSearchItem';
+import styled from "styled-components";
+const WebBlock = styled.div`
+width: 400px;
+* {
+  font-family: "Noto Sans KR", sans-serif;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
+}
+
+.input_search {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 18px;
+  width: 600px;
+  padding: 20px;
+}
+
+.input_search:focus {
+  outline: none;
+}
+
+ul {
+  display: grid;
+  width: 400px;
+  margin: auto;
+  grid-gap: 10px;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+li {
+  width: 1100px;
+  list-style-type: none;
+  padding: 10px;
+}
+
+li dl {
+  display: flex;
+  flex-direction: column;
+}
+
+li dl dd {
+  flex: 1;
+}
+`;
 
 const WebSearchs = props => {
   const [webs, setWebs] = useState([]);
@@ -47,18 +106,17 @@ const WebSearchs = props => {
           <div className="container">  
             <div className="row mb-6">
                 <div className="input-group mb-3" style={{width:'50%'}} >
-                    <select className="btn btn" style={{width:'20%', backgroundColor:'#439A97', color:'white'}}>
+                    <div className="btn btn" style={{width:'20%', backgroundColor:'#439A97', color:'white'}}>
                         <option>웹 검색</option>
-                    </select>
+                    </div>
                     <input type="search"placeholder="검색어를 입력 하세요" name="query" className="input_search"
                             onKeyDown={onEnter} // enter 
                             onChange={onTextUpdate} // change
                             value={text} // view
                           />
-                    <button className="btn btn" style={{backgroundColor:'#439A97', opacity:'70%'}}>검색하기</button>
                 </div>
             </div>
-
+            <WebBlock>
               <ul>
                 {webs.map((web, index) => (
                   <Item
@@ -67,8 +125,12 @@ const WebSearchs = props => {
                     contents={web.contents}
                     url={web.url}
                   />
+
                 ))}
+                            
               </ul>
+
+              </WebBlock>
             </div>
     )
 };
