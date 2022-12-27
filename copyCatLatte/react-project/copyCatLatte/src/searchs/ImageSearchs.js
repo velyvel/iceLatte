@@ -3,7 +3,82 @@ import React, { useEffect, useState } from "react";
 import { ImageSearch } from '../search/ImageSearch';
 
 import Item from '../search/ImageSearchItem';
+import styled from "styled-components";
+const ImageBlock = styled.div`
+width: 300px;
+* {
+  font-family: "Noto Sans KR", sans-serif;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  
+}
 
+html,
+body {
+  height: 100%;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
+}
+
+.input_search {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 18px;
+  width: 600px;
+  padding: 20px;
+  display: block;
+  transition: border 0.3s;
+}
+
+.input_search:focus {
+  outline: none;
+  border-bottom: 1px solid #0675f3;
+}
+
+ul {
+  display: grid;
+  width: 400px;
+  margin: auto;
+  grid-gap: 10px;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+li {
+  width: 270px;
+  list-style-type: none;
+  padding: 5px;
+}
+
+li dl {
+  display: flex;
+  flex-direction: column;
+}
+
+li dl dt {
+  height: 200px;
+}
+
+li dl dt img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius:10px;
+  magin:5px;
+}
+
+li dl dd a{
+  flex: 0.1;
+  text-decoration-line: none;
+  color:black;
+}
+`;
 const ImageSearchs = props => {
   const [images, setImages] = useState([]);
   const [text, setText] = useState("");
@@ -47,18 +122,17 @@ const ImageSearchs = props => {
           <div className="container">  
             <div className="row mb-6">
                 <div className="input-group mb-3" style={{width:'50%'}} >
-                    <select className="btn btn" style={{width:'20%', backgroundColor:'#439A97', color:'white'}}>
+                    <div className="btn btn" style={{width:'20%', backgroundColor:'#439A97', color:'white'}}>
                         <option>이미지 검색</option>
-                    </select>
+                    </div>
                     <input type="search"placeholder="검색어를 입력 하세요..." name="query" className="input_search"
                             onKeyDown={onEnter} // enter 
                             onChange={onTextUpdate} // change
                             value={text} // view
                           />
-                    <button className="btn btn" style={{backgroundColor:'#439A97', opacity:'70%'}}>검색하기</button>
                 </div>
             </div>
-
+              <ImageBlock>
               <ul>
                 {images.map((image, index) => (
                   <Item
@@ -71,6 +145,7 @@ const ImageSearchs = props => {
                   />
                 ))}
               </ul>
+              </ImageBlock>
             </div>
     )
 };

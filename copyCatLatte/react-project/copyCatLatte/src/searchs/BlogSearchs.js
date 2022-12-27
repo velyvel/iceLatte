@@ -54,7 +54,7 @@ ul {
 }
 
 li {
-  width: 300px;
+  width: 270px;
   list-style-type: none;
   border: 1px solid #dddddd;
   padding: 20px;
@@ -124,15 +124,15 @@ const BlogSearchs = props => {
           <div className="container">  
             <div className="row mb-6">
                 <div className="input-group mb-3" style={{width:'50%'}} >
-                    <select className="btn btn" style={{width:'20%', backgroundColor:'#439A97', color:'white'}}>
+                    <div className="btn btn" style={{width:'20%', backgroundColor:'#439A97', color:'white'}}>
                         <option>블로그 검색</option>
-                    </select>
+                    </div>
                     <input type="search"placeholder="검색어를 입력 하세요..." name="query" className="input_search"
                             onKeyDown={onEnter} // enter 
                             onChange={onTextUpdate} // change
                             value={text} // view
                           />
-                    <button className="btn btn" style={{backgroundColor:'#439A97', opacity:'70%'}}>검색하기</button>
+                    {/* <option className="btn btn" style={{backgroundColor:'#439A97', opacity:'70%'}}>엔터</option> */}
                 </div>
             </div>
             <BlogBlock>
