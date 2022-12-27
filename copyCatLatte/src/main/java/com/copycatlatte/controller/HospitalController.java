@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -201,7 +202,7 @@ public class HospitalController {
 	}
 	
 	@CrossOrigin 	        
-	@GetMapping(path= {"/find-hospitals-by-area"})
+	@PostMapping(path= {"/find-hospitals-by-area"})
 	@ResponseBody
 	public List<HospitalDto> loadHospitalList(String gu, String dong) {
 		
@@ -313,7 +314,7 @@ public class HospitalController {
 	}
 	
 	@CrossOrigin 	        
-	@GetMapping(path= {"/choose-dong"})
+	@PostMapping(path= {"/choose-dong"})
 	@ResponseBody
 	public List<String> chooseDong(String gu) {
 		
