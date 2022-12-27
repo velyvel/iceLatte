@@ -5,7 +5,7 @@ import styled from "styled-components";
 const VClipItemBlock = styled.div`
 display: flex;
 
-.thumbnail {
+.img {
   margin-right: 1rem;
   img {
     display: block;

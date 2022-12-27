@@ -48,7 +48,7 @@ const BookSearchs = props => {
             <div className="row mb-6">
                 <div className="input-group mb-3" style={{width:'50%'}} >
                     <select className="btn btn" style={{width:'20%', backgroundColor:'#439A97', color:'white'}}>
-                        <option>몰랑 ㅎㅎㅎㅎ</option>
+                        <option>책 검색</option>
                     </select>
                     <input type="search"placeholder="검색어를 입력 하세요..." name="query" className="input_search"
                             onKeyDown={onEnter} // enter 
