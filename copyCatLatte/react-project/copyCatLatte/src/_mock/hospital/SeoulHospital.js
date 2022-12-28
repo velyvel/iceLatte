@@ -58,7 +58,8 @@ const SeoulHospital = () => {
     useEffect( () => {
         // getHospital();
         // 구/동 데이터 조회
-        const url = `http://localhost:8080/hospitals/choose-gu`;
+        const url = `/hospitals/choose-gu`;
+        // const url = `http://localhost:8080/hospitals/choose-gu`;
         axios.get(url)
              .then( (response) => {
                 setGuList(response.data);
