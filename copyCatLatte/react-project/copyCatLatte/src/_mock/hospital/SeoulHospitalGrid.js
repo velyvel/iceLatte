@@ -11,7 +11,7 @@ const SeoulHospitalGrid = ({ isLoading, data }) => {
             ):(
                 <div>
                     <br />
-                    <table className="table">
+                    <table className="table" style={{marginLeft:'110px'}}>
                     <thead>
                         <th> </th>
                         <th>이름</th>

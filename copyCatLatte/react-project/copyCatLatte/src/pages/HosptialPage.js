@@ -11,7 +11,8 @@ export default function HospitalPage() {
         <title> 동물병원 찾기</title>
       </Helmet>
 
-     <h1>동물병원 찾기</h1>
+     <button  type="button" className="btn btn-primary" style={{marginLeft: '220px'}}>동물병원 조회 페이지</button>
+        <br/><br/>
       <SeoulHospital />
       
     </>

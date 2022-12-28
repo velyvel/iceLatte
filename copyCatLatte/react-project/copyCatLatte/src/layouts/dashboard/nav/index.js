@@ -53,25 +53,13 @@ export default function Nav({ openNav, onCloseNav }) {
         '& .simplebar-content': { height: 1, display: 'flex', flexDirection: 'column' },
       }}
     >
-      <Box sx={{ px: 2.5, py: 3, display: 'inline-flex' }}>
+      <Box sx={{ px: 5, py: 5, display: 'inline-flex' }}>
         <Logo />
       </Box>
 
 
-      <Box sx={{ mb: 5, mx: 2.5 }}>
-        <Link underline="none">
-          <StyledAccount>
 
-            <Box sx={{ ml: 2 }}>
-              <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
-                <p>반려동물에 대한 정보를 <br/>제공하는 웹페이지입니다</p>
-              </Typography>
-            </Box>
-          </StyledAccount>
-        </Link>
-      </Box>
-
-      <NavSection data={navConfig} />
+      <NavSection data={navConfig} style={{marginTop:'30px'}} />
 
       <Box sx={{ flexGrow: 1 }} />
     </Scrollbar>

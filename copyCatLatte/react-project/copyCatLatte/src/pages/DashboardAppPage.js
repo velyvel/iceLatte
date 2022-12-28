@@ -4,19 +4,17 @@ import * as React from 'react';
 
 import {Helmet} from 'react-helmet-async';
 import {Link, Outlet} from 'react-router-dom';
-import {Carousel} from 'nuka-carousel/lib/carousel';
+import Carousel from 'react-bootstrap/Carousel';
+
 
 // @mui
 import {Container, Stack, Typography, Grid} from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
-import CardActionArea from '@mui/material/CardActionArea';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Card from '@mui/material/Card';
-// import CameraIcon from '@mui/icons-material/PhotoCamera';
 import 'bootstrap/dist/css/bootstrap.css';
+import './search.css';
+
 
 
 // ----------------------------------------------------------------------
@@ -30,6 +28,7 @@ export default function DashboardAppPage() {
         height: "500px",
         position: "relative"
     }
+
 
     const mainDiv = {
 
@@ -46,18 +45,24 @@ export default function DashboardAppPage() {
             <Helmet>
                 <title> CopyCat </title>
             </Helmet>
-            <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
+            <Stack direction="row" alignItems="center" justifyContent="space-between" mb={3}>
 
 
                 <AppBar position="relative" style={{backgroundColor: 'lightcoral'}}>
                     <Toolbar>
                         {/* <CameraIcon sx={{ mr: 2 }} /> */}
                         <Typography variant="h6" color="inherit" noWrap>
-                            Album layout
+                            copyCat🐱
                         </Typography>
                     </Toolbar>
                 </AppBar>
             </Stack>
+            {/*  search bar  */}
+            <div className="search__container" style={{ margin:'0 auto'}}>
+                <h1 className="search__title" style={{fontSize:'25pt'}}>🐶 환영합니다 🐱</h1>
+                <input className="search__input" type="text" placeholder="Search" style={{width:'50%',  marginLeft:'400px'}}/>
+            </div>
+            <br/><br/>
 
 
             <Container maxWidth="lg">
@@ -67,9 +72,8 @@ export default function DashboardAppPage() {
                     align="center"
                     color="text.primary"
                     gutterBottom
-                >
-                    🐶 환영합니다 🐱
-                </Typography>
+                />
+
                 <Typography variant="h5" align="center" color="text.secondary" paragraph>
                     1조 copyCat 프로젝트입니다. <br/>
                     open api 활용하여 강아지, 고양이 종류 검색,<br/>
@@ -97,21 +101,39 @@ export default function DashboardAppPage() {
 
             <br/><br/><br/>
             <div>
-                <div id="carouselExampleCaptions" className="carousel slide" data-bs-ride="false">
-                    <div className="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0"
-                                className="active" aria-current="true" aria-label="Slide 1"></button>
-                    </div>
-                    <div className="carousel-inner">
-                        <div className="carousel-item active">
-                            <img src="/assets/main_page/59inBag.jpeg" className="d-block w-100" alt="..." style={{height:'500px'}}/>
-                            <div className="carousel-caption d-none d-md-block">
-                                <h3> 반려동물 관련  페이지</h3>
-                                <p>api 활용하여 만들었습니다</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <Carousel>
+                    <Carousel.Item>
+                        <img
+                            className="d-block w-100"
+                            src="/assets/images/image/carosel3.png"
+                            alt="First slide"
+                        />
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <img
+                            className="d-block w-100"
+                            src="/assets/images/image/carosel2.jpg"
+                            alt="Second slide"
+                        />
+
+                        <Carousel.Caption>
+                            <h3>1조 리액트 프로젝트입니다</h3>
+                            <p>반려견과 관련된 정보 프로젝트입니다</p>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <img
+                            className="d-block w-100"
+                            src="/assets/images/image/carosel1.jpg"
+                            alt="Third slide"
+                        />
+
+                        <Carousel.Caption>
+                            <h3>1조 리액트 프로젝트입니다</h3>
+                            <p>반려견과 관련된 정보 프로젝트입니다</p>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+                </Carousel>
             </div>
         </div>
             );

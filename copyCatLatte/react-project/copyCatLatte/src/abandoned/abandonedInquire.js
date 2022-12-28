@@ -5,6 +5,7 @@ import {Outlet} from 'react-router-dom';
 // @mui
 import {Container} from '@mui/material';
 import axios from "axios";
+import '../pages/search.css';
 // ----------------------------------------------------------------------
 
 // TODO onchange
@@ -226,8 +227,8 @@ const abandonedInquire=() =>{
 
                     <div id='myMap'
                          style={{
-                             width: 850,
-                             height: 480
+                             width: 1000,
+                             height: 500
                          }}/>
                     <br/><br/>
                     <br/><br/>

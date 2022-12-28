@@ -77,10 +77,9 @@ const RecommendationDog=()=>{
     },[]);
     return (
         <div>
-          <div className='form-control'>
-            <center>
-              <div style={divStyle} >
-                <select id='selectedBreed' onChange={ changeValue } value={ selectedV } style={selectedBreedStyle} >
+            <center style={{alignContent:'center', marginLeft:'410px'}}>
+              <div className="input-group mb-3" >
+                <select id='selectedBreed' onChange={ changeValue } value={ selectedV }>
                   {
 
                     breedsDog ?
@@ -92,7 +91,6 @@ const RecommendationDog=()=>{
                       : "빈 데이터"
                   }
                 </select>
-                &nbsp;&nbsp;
                 <button type={"button"} className="btn btn-primary"onClick={breedHandlerDog}>종 가져오기</button>
 
               </div>
@@ -100,9 +98,6 @@ const RecommendationDog=()=>{
               {
                 selectedBreedInfoDog?<BreedInfoDog selectedBreedInfoDog={selectedBreedInfoDog}  />:null
               }
-        
-          </div>
-        
         </div>
     )
 }

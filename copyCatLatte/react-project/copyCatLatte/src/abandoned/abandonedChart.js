@@ -5,6 +5,7 @@ import React from 'react';
 import Chart from 'chart.js/auto';
 // eslint-disable-next-line import/no-unresolved
 import {Line} from 'react-chartjs-2';
+import Accordion from 'react-bootstrap/Accordion';
 
 const data = {
     datasets: [
@@ -14,11 +15,31 @@ const data = {
             borderColor: 'rgb(54, 162, 235)',
             borderWidth: 2,
             data: [
-                { x: 'January', y: 1 },
-                { x: 'February', y: 2 },
-                { x: 'March', y: 3 },
-                { x: 'April', y: null },
-                { x: 'May', y: 5 }
+                { x: '강남구', y: 4 },
+                { x: '강동구', y: 6 },
+                { x: '강북구', y: 5 },
+                { x: '강서구', y: 1 },
+                { x: '관악구', y: 9 },
+                { x: '광진구', y: 7 },
+                { x: '구로구', y: 7 },
+                { x: '금천구', y: 4 },
+                { x: '노원구', y: 10 },
+                { x: '도봉구', y: 4 },
+                { x: '동대문구', y: 5 },
+                { x: '동작구', y: 4 },
+                { x: '마포구', y: 9 },
+                { x: '서대문구', y: 2 },
+                { x: '서초구', y: 5 },
+                { x: '성북구', y: 1 },
+                { x: '성동구', y: 2 },
+                { x: '송파구', y: 3 },
+                { x: '양천구', y: 2 },
+                { x: '영등포구', y: 3 },
+                { x: '용산구', y: 16 },
+                { x: '은평구', y: 3 },
+                { x: '종로구', y: 1 },
+                { x: '중구', y: 2 },
+                { x: '중랑구', y: 3 }
             ],
             yAxisID: 'y_sub',
         },
@@ -27,12 +48,31 @@ const data = {
             label: 'Dataset 2',
             backgroundColor: 'rgb(255, 99, 132)',
             data: [
-                { x: 'January', y: 14 },
-                { x: 'February', y: 20 },
-                { x: 'March', y: 32 },
-                { x: 'April', y: 41 },
-                { x: 'May', y: 15 },
-                { x: 'June', y: 26 }
+                { x: '강남구', y: 4 },
+                { x: '강동구', y: 6 },
+                { x: '강북구', y: 5 },
+                { x: '강서구', y: 1 },
+                { x: '관악구', y: 9 },
+                { x: '광진구', y: 7 },
+                { x: '구로구', y: 7 },
+                { x: '금천구', y: 4 },
+                { x: '노원구', y: 10 },
+                { x: '도봉구', y: 4 },
+                { x: '동대문구', y: 5 },
+                { x: '동작구', y: 4 },
+                { x: '마포구', y: 9 },
+                { x: '서대문구', y: 2 },
+                { x: '서초구', y: 5 },
+                { x: '성북구', y: 1 },
+                { x: '성동구', y: 2 },
+                { x: '송파구', y: 3 },
+                { x: '양천구', y: 2 },
+                { x: '영등포구', y: 3 },
+                { x: '용산구', y: 16 },
+                { x: '은평구', y: 3 },
+                { x: '종로구', y: 1 },
+                { x: '중구', y: 2 },
+                { x: '중랑구', y: 3 }
             ],
             borderColor: 'red',
             borderWidth: 2,
@@ -42,12 +82,31 @@ const data = {
             label: 'Dataset 3',
             backgroundColor: 'rgb(75, 192, 192)',
             data: [
-                { x: 'January', y: 1 },
-                { x: 'February', y: 2 },
-                { x: 'March', y: 3 },
-                { x: 'April', y: 4 },
-                { x: 'May', y: 5 },
-                { x: 'June', y: 6 }
+                { x: '강남구', y: null },
+                { x: '강동구', y: 4 },
+                { x: '강북구', y: 3 },
+                { x: '강서구', y: 1 },
+                { x: '관악구', y: 1 },
+                { x: '광진구', y: 4 },
+                { x: '구로구', y: 3 },
+                { x: '금천구', y: 1 },
+                { x: '노원구', y: 3 },
+                { x: '도봉구', y: null },
+                { x: '동대문구', y: 1 },
+                { x: '동작구', y: 1 },
+                { x: '마포구', y: 5 },
+                { x: '서대문구', y: 1 },
+                { x: '서초구', y: 3 },
+                { x: '성북구', y: 1 },
+                { x: '성동구', y: 1 },
+                { x: '송파구', y: 1 },
+                { x: '양천구', y: 1 },
+                { x: '영등포구', y: null },
+                { x: '용산구', y: null },
+                { x: '은평구', y: 2 },
+                { x: '종로구', y: 1 },
+                { x: '중구', y: 1 },
+                { x: '중랑구', y: 1 }
             ],
             yAxisID: 'y_sub',
         },
@@ -84,7 +143,7 @@ const options = {
             usePointStyle: true,
             filter: (item) => item.parsed.y !== null,
             callbacks: {
-                title: (context) => `${context[0].label  }🐽`,
+                title: (context) => `${context[0].label  }`,
                 label: (context) => {
                     const label = `${context.dataset.label  }` || '';
 
@@ -168,13 +227,115 @@ const options = {
 
 
 
+const data2 = {
+    labels: ["Scatter"],
+    datasets: [
+        {
+            label: "My First dataset",
+            fill: false,
+            backgroundColor: "rgba(75,192,192,0.4)",
+
+            pointBackgroundColor: "#000",
+            pointBorderWidth: 0,
+            pointHoverRadius: 9,
+            pointHoverBackgroundColor: "rgba(233, 120, 100, 1)",
+            pointHoverBorderColor: "rgba(233, 120, 100, 1)",
+            pointHoverBorderWidth: 0,
+            pointRadius: 7,
+            pointHitRadius: 10,
+            data: [
+                { x: -65, y: 75, label: "label 1" },
+                { x: 59, y: 49, label: "label 2" },
+                { x: 80, y: -90, label: "label 3" },
+                { x: -81, y: 29, label: "label 4" },
+                { x: 56, y: 36, label: "label 5" },
+                { x: -55, y: 25, label: "label 6" },
+                { x: 40, y: 100, label: "label 7" }
+            ]
+        }
+    ]
+};
+
+const options2 = {
+    width: 500,
+    legend: {
+        display: false
+    },
+    scales: {
+        xAxes: [
+            {
+                gridLines: {
+                    drawBorder: true,
+                    lineWidth: 0
+                },
+                ticks: {
+                    // for debugging
+                    display: false,
+                    suggestedMin: -100,
+                    suggestedMax: 100
+                }
+            }
+        ],
+        yAxes: [
+            {
+                gridLines: {
+                    drawBorder: true,
+                    lineWidth: 0
+                },
+                ticks: {
+                    display: false
+                }
+            }
+        ]
+    },
+    plugins: {
+        datalabels: {
+            align: "left",
+            anchor: "right",
+            color: "black",
+            padding: { right: 20 }
+        }
+    },
+    tooltips: {
+        position: "nearest",
+        mode: "point",
+        intersect: true,
+        yPadding: 10,
+        xPadding: 10,
+        caretSize: 18,
+        caretPadding: 10,
+        backgroundColor: "white",
+        titleFontColor: "#000",
+        bodyFontColor: "#000",
+        borderColor: "rgba(0,0,0,1)",
+        borderWidth: 1,
+        yAlign: "bottom"
+    }
+};
+
+
 const abandonedChart = () => {
     return (
         <Container>
-               <h5>보호소 현황 차트입니다</h5>
 
-            <Line type="line" data={data} options={options} />
+            <Accordion defaultActiveKey="0">
+                <Accordion.Item eventKey="0">
+                    <Accordion.Header>서울시 보호소 현황(막대, 선)</Accordion.Header>
+                    <Accordion.Body>
+                        <Line type="line" data={data} options={options} />
+                        <br/>
+
+                        <span>
+                            라인 그래프, 빨간 막대 그래프: 서울시 구별 보호소 현황<br/>
+                            초록 막대 그래프: 실제 존재하는 보호소 현황<br/>
+                            * 결론: 위치정보 개선이 필요함
+                        </span>
+                    </Accordion.Body>
+                </Accordion.Item>
+            </Accordion>
         </Container>
+
+
     );
 };
 

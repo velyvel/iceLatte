@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React, { useEffect, useState } from "react";
 import { ImageSearch } from '../search/ImageSearch';
+import '../pages/search.css';
 
 import Item from '../search/ImageSearchItem';
 import styled from "styled-components";
@@ -107,7 +108,7 @@ const ImageSearchs = props => {
       query,
       sort: "accuracy", // accuracy | recency 정확도 or 최신
       page: 1, // 페이지번호
-      size: 10 // 한 페이지에 보여 질 문서의 개수
+      size: 12 // 한 페이지에 보여 질 문서의 개수
     };
 
     const { data } = await ImageSearch(params);
@@ -121,17 +122,18 @@ const ImageSearchs = props => {
     return(
           <div className="container">  
             <div className="row mb-6">
-                <div className="input-group mb-3" style={{width:'50%'}} >
-                    <div className="btn btn" style={{width:'20%', backgroundColor:'#439A97', color:'white'}}>
-                        <option>이미지 검색</option>
-                    </div>
-                    <input type="search"placeholder="검색어를 입력 하세요..." name="query" className="input_search"
+
+
+                <div className="search__container" style={{width:'100%'}} >
+                    <h1 className="search__title" style={{fontSize:'20pt'}}>🐶 이미지 검색 🐱</h1>
+                    <input type="search" style={{backgroundColor:'lightgrey'}} placeholder="이미지 검색" name="query" className="search__input"
                             onKeyDown={onEnter} // enter 
                             onChange={onTextUpdate} // change
                             value={text} // view
                           />
                 </div>
             </div>
+              <hr/><br/><br/>
               <ImageBlock>
               <ul>
                 {images.map((image, index) => (

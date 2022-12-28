@@ -131,6 +131,9 @@ export default function ParkInfo() {
             <Helmet>
                 <title>공원 조회 서비스</title>
             </Helmet>
+
+            <button  type="button" className="btn btn-primary" style={{marginLeft: '220px'}}>동물병원 조회 페이지</button>
+            <br/><br/>
             <Container>
             { area ? 
             <select id="seletLocation" className="form-select" onChange={setMapData.bind()} style={{width:"200px",backgroundColor:"lightgray",border:"0px",}}>

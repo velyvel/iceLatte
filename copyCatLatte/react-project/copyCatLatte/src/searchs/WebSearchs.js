@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React, { useEffect, useState } from "react";
 import { WebSearch } from '../search/WebSearch';
-
+import '../pages/search.css';
 import Item from '../search/WebSearchItem';
 import styled from "styled-components";
 const WebBlock = styled.div`
@@ -105,17 +105,19 @@ const WebSearchs = props => {
     return(
           <div className="container">  
             <div className="row mb-6">
-                <div className="input-group mb-3" style={{width:'50%'}} >
-                    <div className="btn btn" style={{width:'20%', backgroundColor:'#439A97', color:'white'}}>
-                        <option>웹 검색</option>
-                    </div>
-                    <input type="search"placeholder="검색어를 입력 하세요" name="query" className="input_search"
+
+
+                <div className="search__container" style={{width:'100%'}} >
+                    <h1 className="search__title" style={{fontSize:'20pt'}}>🐶 웹검색 🐱</h1>
+                    <input type="search" style={{backgroundColor:'lightgrey'}} placeholder="웹 검색" name="query" className="search__input"
                             onKeyDown={onEnter} // enter 
                             onChange={onTextUpdate} // change
                             value={text} // view
                           />
                 </div>
             </div>
+
+              <hr/><br/><br/>
             <WebBlock>
               <ul>
                 {webs.map((web, index) => (

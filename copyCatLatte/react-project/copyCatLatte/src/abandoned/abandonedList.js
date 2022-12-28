@@ -3,6 +3,7 @@
 import React, {useState} from "react";
 import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.css';
+import '../pages/search.css';
 
 import {Table, TablePagination, TableRow, TableHead, TableContainer, TableCell, TableBody} from '@mui/material';
 
@@ -95,11 +96,13 @@ const AbandonedList = () => {
                 }}
                         onClick={clickHandler}>전체검색
                 </button>
+
+
                 <br/><br/>
                 <div className="input-group mb-3">
-                    <input className="form-control" type="text" placeholder="검색어를 입력해주세요" onChange={event => {
+                    <input className="search__input" type="text" placeholder="검색어를 입력해주세요" onChange={event => {
                         setSearchTerm(event.target.value)
-                    }} style={{margin: '0 auto', marginBottom: '20px', padding: '10px', width: '40%'}}/>
+                    }}/>
                     <br/><br/>
                     <TableContainer>
                         <Table aria-label="simple table">
@@ -114,9 +117,6 @@ const AbandonedList = () => {
                                     <TableCell componet = "th">
                                         <SearchedList searchTerm={searchTerm.toLowerCase()}/>
                                     </TableCell>
-                                    {/*<TableCell>*/}
-                                    {/*    <SearchedList searchTerm={searchTerm}/>*/}
-                                    {/*</TableCell>*/}
                                 </TableRow>
                             </TableBody>
                         </Table>

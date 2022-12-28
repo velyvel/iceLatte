@@ -90,7 +90,7 @@ const Kakaomap = ({ searchPlace }) => {
             <div
                 id="myMap"
                 style={{
-                    width: '500px',
+                    width: '1000px',
                     height: '500px',
                 }}
             ></div>

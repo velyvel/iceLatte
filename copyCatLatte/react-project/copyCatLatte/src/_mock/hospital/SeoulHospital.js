@@ -81,11 +81,7 @@ const SeoulHospital = () => {
     return (
         <>
 
-
-
-
-
-    <div className="row mb-3">
+    <div className="row mb-3" style={{marginLeft:'220px'}}>
         <div className="form-group col-md-4">
             <label className="mb-2">구 조회</label>
             <select className="form-select form-select-sm mb-1"
@@ -127,7 +123,7 @@ const SeoulHospital = () => {
 
         <Map // 지도를 표시할 Container
             center={ center || { lat: 37.566345, lng: 126.977893 } }
-            style={{ width: "100%", height: "450px"}}
+            style={{ width: 1000, height: 500, marginLeft: '220px'}}
             level={5} // 지도의 확대 레벨
         >
             {data.map((hospital) => (
