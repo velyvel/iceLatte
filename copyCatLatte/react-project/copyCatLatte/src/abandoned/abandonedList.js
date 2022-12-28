@@ -101,8 +101,7 @@ const AbandonedList = () => {
                 <div className="input-group mb-3">
                     <div className="search__container" style={{marginTop:'-50px'}}>
                     <input className="search__input" type="text" placeholder="검색어를 입력해주세요" onChange={event => {
-                        setSearchTerm(event.target.value)
-                    }} style={{width: '200%'}}/>
+                        setSearchTerm(event.target.value)}} style={{width: '200%'}}/>
                     </div>
                     <br/><br/>
                     <TableContainer>
