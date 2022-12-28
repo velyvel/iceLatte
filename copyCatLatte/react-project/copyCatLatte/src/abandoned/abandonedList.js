@@ -91,8 +91,7 @@ const AbandonedList = () => {
                     backgroundColor: '#439A97',
                     opacity: '70%',
                     width: '30%',
-                    margin: '0 auto',
-                    marginBottom: '20px'
+                    marginLeft:'10px'
                 }}
                         onClick={clickHandler}>전체검색
                 </button>
@@ -100,9 +99,11 @@ const AbandonedList = () => {
 
                 <br/><br/>
                 <div className="input-group mb-3">
+                    <div className="search__container" style={{marginTop:'-50px'}}>
                     <input className="search__input" type="text" placeholder="검색어를 입력해주세요" onChange={event => {
                         setSearchTerm(event.target.value)
-                    }}/>
+                    }} style={{width: '200%'}}/>
+                    </div>
                     <br/><br/>
                     <TableContainer>
                         <Table aria-label="simple table">
@@ -120,15 +121,6 @@ const AbandonedList = () => {
                                 </TableRow>
                             </TableBody>
                         </Table>
-                        <TablePagination
-                            rowsPerPageOptions={[5, 10, 25]}
-                            component="div"
-                            count={searchTerm.length}
-                            rowsPerPage={rowsPerPage}
-                            page={page}
-                            onChangePage={handleChangePage}
-                            onChangeRowsPerPage={handleChangeRowsPerPage}
-                        />
                     </TableContainer>
                 </div>
             </div>

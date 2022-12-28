@@ -26,7 +26,8 @@ const SeoulHospital = () => {
 
     const getHospital = async (gu, dong) => {
         // setIsLoading(true);
-        const url = `http://localhost:8080/hospitals/find-hospitals-by-area`;
+        const url = `/hospitals/find-hospitals-by-area`;
+        // const url = `http://localhost:8080/hospitals/find-hospitals-by-area`;
 
         const response = await axios.post(url, { "gu" : gu, "dong" : dong}, { headers: { "Content-Type": "application/x-www-form-urlencoded" }} );
              

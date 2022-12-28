@@ -77,6 +77,10 @@ const abandonedInquire=() =>{
         findShelter(item);
     }
 
+    // const onChange3 = (item) => {
+    //     findShelter(item[0]);
+    // }
+
     const findShelter =  (shelter1) => {
         const careRegNo = shelter1.careRegNo;
         const sheDetailUrl =  `https://apis.data.go.kr/1543061/animalShelterSrvc/shelterInfo?serviceKey=${serviceKey}&care_reg_no=${careRegNo}&_type=${type}`;
@@ -232,9 +236,31 @@ const abandonedInquire=() =>{
                          }}/>
                     <br/><br/>
                     <br/><br/>
-                        <div>
-                            <selectedShelterList/>
-                        </div>
+                    <div>
+                        {/*<table style={{border: '5px solid black', width: '1000px', marginTop: '20px'}}*/}
+                        {/*        onChange={onChange3}>*/}
+                            <table className="table table-hover" style={{marginTop: '20px'}}>
+                            <thead>
+                            <tr>
+                                <th colSpan={3}><button type='button' className="btn btn-secondary">상세보기</button></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr style={{textAlign:'center'}}>
+                                <td>센터명</td>
+                                <td>주소</td>
+                                <td>연락처</td>
+                            </tr>
+                            {selectedShelter?
+                            <tr style={{textAlign:'center'}}>
+                                <td>{selectedShelter.careNm}</td><td>{selectedShelter.careAddr}</td><td>{selectedShelter.careTel}</td>
+                            </tr>
+                                :
+                                null
+                            }
+                            </tbody>
+                        </table>
+                    </div>
                     <Outlet/>
                 </div>
             </Container>
